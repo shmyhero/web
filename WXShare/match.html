@@ -1,0 +1,121 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>全民股神</title>
+<meta name="keywords" content="">
+<meta name="description" content="peter is the best">
+<meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link rel="stylesheet" type="text/css"
+	href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+<link rel="stylesheet" href="styles/main-6984c4ef.css">
+</head>
+<body ontouchstart="">
+<div class="spinner active"></div>
+
+<script type="text/javascript">
+function doHide(){
+	window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.tradehero.th";
+}
+
+function dowHide(){
+	var a = document.getElementsByClassName("dow");
+    a[0].class = "dow";
+}
+</script>
+<div class="banner" onclick="doHide();">
+<div class="banner-bg">&nbsp;</div>
+</div>
+
+	<form class="pure-form pure-g footer">
+    <div class="pure-u-1-3 footviv">
+       <a class="jy2" href="match.html">&nbsp;</a>
+    </div>
+    <div class="pure-u-1-3 footviv">
+       <a class="gp1" href="assets.html">&nbsp;</a>
+    </div>
+
+    <div class="pure-u-1-3 footviv">
+       <a class="jht1" href="timeline.html">&nbsp;</a>
+    </div>
+</form>
+
+
+<div class="keng">
+
+<div class="content match-container"></div>
+<div class="tips center">
+<div class="match-action menu">
+<button class="pure-button pure-button-primary btn-action">关注股神</button>
+<button class="pure-button pure-button-success btn-download">了解股神</button>
+</div>
+
+</div>
+
+</div>
+<div class="modal action hide">
+<div class="overlay"></div>
+<div class="alert">
+<div class="alert-content">操作成功，下载查看更多</div>
+<div class="alert-btns"><a class="action-cancel">取消</a> 
+<a class="action-ok btn-download1">下载</a></div>
+</div>
+</div>
+
+<div class="modal share hide">
+<div class="overlay"></div>
+<div class="share">
+<div class="title up"><span>分享我吧！</span> <img
+	src="images/arrow2.png"></div>
+<div class="subtitle">如果右上角没有显示分享按钮请 <a
+	class="under up btn-download">下载全民股神</a></div>
+</div>
+</div>
+
+
+<script id="matchTemplate" type="text/html">
+      <div class="match-info">
+        <div class="match-author ">
+          		<b>热门股神</b>
+        </div>
+      </div>
+	<ul class="match-players">
+        {{each users }}
+          <li>
+            <div class="player-rank">
+                <span class="icon-rank{{$value.index}}"></span>
+            </div>
+            <div class="player-info">
+              <img class="avatar" src="{{$value.picUrl}}" class="avatar">
+              <div class="info">
+                <span class="name">{{$value.name}}</span>
+                <br>
+                收益率：<span class="{{$value.roi | statusClass}}">{{$value.roi | fixed2Percentage:true}}</span>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
+<div class="dow" onclick="dowHide()"><img src="images/dowshare.png" alt="下载"></div>
+<script type="text/javascript">
+if(window.screen.availHeight<568)
+{
+//alert(window.screen.availHeight);
+ var keng = document.getElementsByClassName("keng");
+ keng[0].className = "keng overflow";
+
+}
+</script>
+<script src="http://cdn.staticfile.org/zepto/1.0rc1/zepto.min.js"></script>
+<script src="scripts/util-a9ea5c4a.js"></script>
+<script src="scripts/match-6021c10c.js"></script>
+<script src="scripts/localytics.js"></script>
+</body>
+</html>

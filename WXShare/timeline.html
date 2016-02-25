@@ -1,0 +1,91 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>全民股神</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="stylesheet" type="text/css"
+	href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="styles/main-6984c4ef.css">
+    <link rel="stylesheet" type="text/css" href="styles/timeline3.css">
+  </head>
+  <body ontouchstart="">
+<script type="text/javascript">
+function doHide(){
+	window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.tradehero.th";
+}
+
+function dostock(Date,content,title){
+	localStorage.setItem("Date", Date); 
+	localStorage.setItem("content", content); 
+	localStorage.setItem("title", title);
+	window.location.href = "line.html";
+}
+
+function dowHide(){
+	var a = document.getElementsByClassName("dow");
+    a[0].className = "dow hide";
+}
+
+
+
+</script>
+<div class="banner" onclick="doHide();">
+<div class="banner-bg">&nbsp;</div>
+</div>
+
+<div class="footer pure-form pure-g">
+<div class="pure-u-1-3 footviv"><a class="jy1" href="match.html">&nbsp;</a></div>
+<div class="pure-u-1-3 footviv"><a class="gp1" href="assets.html">&nbsp;</a></div>
+<div class="pure-u-1-3 footviv"><a class="jht2" href="timeline.html">&nbsp;</a> </div>
+
+	</div>
+
+  <div class="content Timeline-container "></div>
+ 
+
+<script id="timelineTemplate" type="text/html">
+ <div class="keng">
+    <ul class="assets-list ">
+      {{each positions}}
+      <li onclick="dostock('{{$value.Date}}','{{$value.description}}','{{$value.title}}');">
+        <div class="title">
+         {{$value.title}} 
+        </div>
+        <div class="right">
+          <span class="dollar">{{$value.pubDate  }}</span>
+          
+        </div>
+        
+	</li>
+      {{/each}}
+    </ul>
+  </div>
+    </script>
+
+    
+
+<div class="dow"><img src="images/dowshare.png" alt="下载"></div>
+<script type="text/javascript">
+if(window.screen.availHeight<568)
+{
+//alert(window.screen.availHeight);
+ var keng = document.getElementsByClassName("keng");
+ keng[0].className = "keng overflow";
+
+}
+
+</script>
+    <script src="http://cdn.staticfile.org/zepto/1.0rc1/zepto.min.js"></script>
+    <script src="scripts/util-a9ea5c4a.js"></script>
+    <script type="text/javascript" src="scripts/timeline-2015.js"></script>
+   
+  </body>
+</html>

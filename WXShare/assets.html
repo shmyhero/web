@@ -1,0 +1,212 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>全民股神</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link rel="stylesheet" type="text/css"
+	href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+<link rel="stylesheet" href="styles/main-6984c4ef.css">
+<script language="javascript" type="text/javascript">
+        //创建XMLHttpRequest对象
+        function createXMLHttpRequest() {
+            var obj;
+            if(window.XMLHttpRequest) { //Mozilla 浏览器
+                obj = new XMLHttpRequest();
+            }
+            else if (window.ActiveXObject) { // IE浏览器
+                try {
+                    obj = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch(e){
+                    try{
+                        obj = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {}
+                }
+            }
+            return obj;
+        }
+        //当输入框的内容变化时，调用该函数
+        function searchSuggest() {
+            var inputField = document.getElementById("txtSearch");
+            var suggestText = document.getElementById("search_suggest");
+            if (inputField.value.length > 3) {
+                var o=createXMLHttpRequest();
+                var url = "https://cn1.api.tradehero.mobi/api/securities/search?q=" + escape(inputField.value);
+                o.open("GET", url, true);
+                o.onreadystatechange = function(){
+                    if(o.readyState == 4){
+                        if(o.status == 200){
+                            var sourceText = o.responseText.split(";");
+                            if(sourceText.length > 1) {
+                                suggestText.style.display="";
+                                
+                                var innerHTML = '<div class="pure-menu pure-menu-scrollable custom-restricted">';
+                                
+                                for(var i=0;i<sourceText.length-1;i++) {
+                                	var s='';
+									if(i==0){
+											s+='<a href="#" class="pure-menu-link libg"   onclick="javascript:setSearch(this.innerHTML);">' +sourceText[0]+'</a><ul class="pure-menu-list">';
+									}else{
+											s+='<li class="pure-menu-item"><a href="#" class="pure-menu-link libg"   onclick="javascript:setSearch(this.innerHTML);">' +sourceText[i]+'</a></li>';
+                                    	}
+									innerHTML += s;
+                                }
+                                suggestText.innerHTML = innerHTML+'</ul></div>';
+                            }
+                            else{
+                                suggestText.style.display="none";
+                        }
+                        }
+                    }
+                };//指定响应函数
+                o.send(null); // 发送请求
+            }
+            else {
+                suggestText.style.display="none";
+            }
+        }
+        function suggestOver(div_value){
+            div_value.className = "suggest_link_over";
+        }
+        function suggestOut(div_value){
+            div_value.className = "suggest_link";
+        }
+        function setSearch(obj){
+            document.getElementById("txtSearch").value = obj;
+            var div = document.getElementById("search_suggest");
+            div.innerHTML = "";
+            div.style.display="none";
+            var id=obj.split("/")[0].split(".")[0];
+            var name=obj.split("/")[1];
+            window.location.href = "StockSearch.html?id="+id+"&name="+name ;
+            
+        }
+        function tbblur(){
+            var div = document.getElementById("search_suggest");
+            //div.innerHTML = "";
+            div.style.display="none";
+        }
+    </script>
+<style type="text/css" media="screen">
+.suggest_link {
+	background-color: #FFFFFF;
+	padding: 2px 6px 2px 6px;
+}
+
+.suggest_link_over {
+	background-color: #E8F2FE;
+	padding: 2px 6px 2px 6px;
+}
+
+#search_suggest {
+	position: absolute;
+	text-align: left;
+}
+
+/*input*/
+.input_on {
+	padding: 9px 10px 9px 32px;
+	background: #ededed url(res/search-icon.png) no-repeat 9px center;
+}
+
+.custom-restricted {
+	height: 160px;
+	width: 250px;
+	border: 1px solid gray;
+	border-radius: 4px;
+}
+
+.libg {
+	background-color: #fff;
+}
+
+</style>
+
+</head>
+<body ontouchstart="">
+<div class="spinner active"></div>
+
+<script type="text/javascript">
+function doHide(){
+	window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.tradehero.th";
+}
+//stock.html?id={{$value.id}}&name={{$value.name}}&lastPrice={{$value.lastPrice}}&chartSymbol={{$value.chartSymbol}}&currencyDisplay={{$value.currencyDisplay}}&risePercent={{$value.risePercent}}"
+function dostock(id,name,lastPrice,chartSymbol,currencyDisplay,risePercent,Symbol){
+	window.location.href = "stock.html?id="+id+"&name="+name+"&lastPrice="+lastPrice+"&chartSymbol="+chartSymbol+"&currencyDisplay="+currencyDisplay+"&risePercent="+risePercent+"&chart="+Symbol; 
+}
+
+function dowHide(){
+	var a = document.getElementsByClassName("dow");
+    a[0].className = "dow hide";
+}
+</script>
+<div class="banner" onclick="doHide();">
+<div class="banner-bg">&nbsp;</div>
+</div>
+ <div class="content">
+<div class="match-info">
+        <div class="match-author">
+          <div class="pure-g">
+    <div class="pure-u-1">
+<form class="pure-form">
+
+     <input type="text" id="txtSearch" name="txtSearch"  style="padding: 9px 10px 9px 32px; background: #ededed url(res/search-icon.png) no-repeat 9px center;" size="30" class="pure-input-rounded" placeholder="查询股票" />
+
+	 <div id="search_suggest" style="display:none"></div>
+</form>
+</div>
+</div>		
+        </div>
+      </div>
+  </div>
+<div class="footer pure-form pure-g">
+<div class="pure-u-1-3 footviv"><a class="jy1" href="match.html">&nbsp;</a></div>
+<div class="pure-u-1-3 footviv"><a class="gp2" href="assets.html">&nbsp;</a></div>
+<div class="pure-u-1-3 footviv"><a class="jht1" href="timeline.html">&nbsp;</a> </div>
+</div>
+
+
+<div class="content assets-container"></div>
+
+<div class="tips center">
+<div class="match-action">
+<!--  input*/<button class="pure-button pure-button-switch btn-HYP">换一批</button> -->
+</div>
+</div>
+
+<script id="positionsTemplate" type="text/html">
+	
+    <ul class="assets-list">
+      {{each positions}}
+      <li>
+        <div>
+         <b>  {{$value.name}} </b> <br>
+          <span class="dollar ">{{$value.Symbol}}</span>
+        </div>
+        <div class="right">
+          <span class="dollar">{{$value.currencyDisplay | currency}}</span>
+          {{$value.lastPrice | fixed2}}
+        </div>
+        <div class="right">
+          <span class="percent {{$value.risePercent | statusClass}}">{{$value.risePercent | fixed2Percentage:true}}</span>
+        </div>
+	</li>
+      {{/each}}
+    </ul>
+    </script>
+
+
+<script src="http://cdn.staticfile.org/zepto/1.0rc1/zepto.min.js"></script>
+<script src="scripts/util-a9ea5c4a.js"></script>
+<script src="scripts/assets-cdcc09ba.js"></script>
+<script src="scripts/localytics.js"></script>
+</body>
+</html>

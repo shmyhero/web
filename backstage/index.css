@@ -1,0 +1,70 @@
+#login_title {
+	font-size:4rem;
+	text-align: center;
+	padding-bottom: 10px;
+	color: #75726e;
+
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	-webkit-animation-duration: 1s;
+	-webkit-animation-delay: .2s;
+	-webkit-animation-timing-function: ease;
+	-webkit-animation-fill-mode: both;
+
+	-moz-animation-duration: 1s;
+	-moz-animation-delay: .2s;
+	-moz-animation-timing-function: ease;
+	-moz-animation-fill-mode: both;
+
+	-ms-animation-duration: 1s;
+	-ms-animation-delay: .2s;
+	-ms-animation-timing-function: ease;
+	-ms-animation-fill-mode: both;
+
+	animation-duration: 1s;
+	animation-delay: .2s;
+	animation-timing-function: ease;
+	animation-fill-mode: both;
+}
+
+#login_title.wobble {
+	-webkit-animation-name: rubberBand;
+	-moz-animation-name: rubberBand;
+	-ms-animation-name: rubberBand;
+	animation-name: rubberBand;
+}
+#inputEmail3
+{
+	margin-bottom: 3%;
+}
+#inputPassword3
+{
+	margin-bottom: 3%;
+}
+#signin{
+	min-width:99px ;
+}
+#login{
+	width:37%;
+	min-width: 300px;
+	margin-top: 15%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#info{
+	padding: 20px;
+}
+.show{
+	display: block;
+}
+.hide{
+	display: none;
+}
+#icon{
+	height: 100px;
+	width: 100px;
+}

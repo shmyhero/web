@@ -1,0 +1,43 @@
+.mainbox {
+	MARGIN-TOP: 5px;PADDING-BOTTOM: 5px; WIDTH: 100%
+}
+
+A.page {
+	PADDING-RIGHT: 6px;
+	DISPLAY: block;
+	PADDING-LEFT: 6px;
+	BACKGROUND: #fff;
+	FLOAT: left;
+	PADDING-BOTTOM: 0px;
+	LINE-HEIGHT: 22px;
+	MARGIN-RIGHT: 4px;
+	PADDING-TOP: 0px;
+	HEIGHT: 22px;
+	border: 1px solid #66CC00;
+}
+.page {
+	PADDING-RIGHT: 6px;
+	DISPLAY: block;
+	PADDING-LEFT: 6px;
+	BACKGROUND: #fff;
+	FLOAT: left;
+	PADDING-BOTTOM: 0px;
+	LINE-HEIGHT: 22px;
+	MARGIN-RIGHT: 4px;
+	PADDING-TOP: 0px;
+	HEIGHT: 22px;
+	border: 1px solid #339900;
+}
+A.page:hover {
+	BACKGROUND: #ffffe9;
+	border: 1px solid #339933;
+}
+.page INPUT {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM-WIDTH: 0px; WIDTH: 20px; LINE-HEIGHT: 16px; HEIGHT: 14px; BORDER-RIGHT-WIDTH: 0px
+}
+#on {
+	COLOR: #fff;
+	background-color: #009900;
+	border: 1px solid #006600;
+}
+A.page img,.page img{ position:relative; top:1px;border:none;}
