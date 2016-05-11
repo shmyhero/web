@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+
+</head>
+<body>
+<!-- This element will show updated count -->
+<h1 id="valueContainer">0</h1>
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script type="text/javascript">
+     
+function getBrowserPrefix() {
+   
+  // Check for the unprefixed property.
+  if ('hidden' in document) {
+    return null;
+  }
+ 
+  // All the possible prefixes.
+  var browserPrefixes = ['moz', 'ms', 'o', 'webkit'];
+ 
+  for (var i = 0; i < browserPrefixes.length; i++) {
+    var prefix = browserPrefixes[i] + 'Hidden';
+    if (prefix in document) {
+      return browserPrefixes[i];
+    }
+  }
+ 
+  // The API is not supported in browser.
+  return null;
+}
+ 
+// Get Browser Specific Hidden Property
+function hiddenProperty(prefix) {
+  if (prefix) {
+    return prefix + 'Hidden';
+  } else {
+    return 'hidden';
+  }
+}
+ 
+// Get Browser Specific Visibility State
+function visibilityState(prefix) {
+  if (prefix) {
+    return prefix + 'VisibilityState';
+  } else {
+    return 'visibilityState';
+  }
+}
+ 
+// Get Browser Specific Event
+function visibilityEvent(prefix) {
+  if (prefix) {
+    return prefix + 'visibilitychange';
+  } else {
+    return 'visibilitychange';
+  }
+}
+
+    // Get Browser Prefix
+    var prefix = getBrowserPrefix();
+    var hidden = hiddenProperty(prefix);
+    var visibilityState = visibilityState(prefix);
+    var visibilityEvent = visibilityEvent(prefix);
+     
+    var timer = null;
+     
+    function increaseVal() {
+        var newVal = parseInt($('#valueContainer').text()) + parseInt(1);
+        $('#valueContainer').text(newVal);
+        document.title = newVal + ': Running'; 
+         
+        timer = setTimeout(function() {
+            increaseVal();
+        }, 1);
+    }
+     
+    // Visibility Change 
+    document.addEventListener(visibilityEvent, function(event) {
+          if (document[hidden]) {
+              console.log('hidden');  
+              
+          } else {
+              console.log('show');  
+          }
+    });
+  //increaseVal();
+  //     document.addEventListener(visibilityEvent, function(event) {
+  //     if (document[hidden]) {
+  //       document.title = "Hidden";
+  //     } else {
+  //       document.title = "Visible";
+  //     }
+  // });
+     
+    
+     
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+
+</head>
+<body>
+<div  class=" bookmark" id="bookmark">
+
+</div>
+    
+
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+					$.ajax({
+                        url :'http://121.40.185.130:8062/api/CreditKey/getGoodsByIndustry',
+						//url :'http://121.40.185.130:9999/api/values/getall',
+						//type: "GET",
+                        type: "POST",
+                        data :{SceneName : '旅游'},
+                        dataType : 'json',
+                        async : false,
+                        success : function(data) {
+                            console.log(data);
+                        },
+                        error : function(XMLHttpRequest,textStatus, errorThrown) {}
+                    }); 
+});
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>suggest </title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no,email=no" />
+    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+    <link rel="stylesheet" href="./prd/yo/usage/kami/suggest.css" />
+    <style type="text/css">
+    .yo-suggest-on  {
+        z-index: 3000;
+    }
+    </style>
+</head>
+<body>
+    <div class="flex" id="container">
+    
+    <div class="yo-suggest yo-suggest-modal yo-suggest-on">
+    <div class="operate yo-header">
+        <div class="action" >
+            <input type="search" id="yo-search-input" placeholder="搜索金融产品" class="input">
+            <label class="label" for="yo-search-input"><i class="yo-ico yo-ico-search"></i></label>
+            <i class="yo-ico yo-ico-delete" ></i>
+            <i class="yo-ico yo-ico-loading"  style="display: none;"></i>
+        </div>
+        <span class="cancel" >取消</span>
+    </div>
+
+    <div class="cont">
+       <div class="yo-group yo-list">
+            <ul class="yo-list" >
+                <li class="label Grid" >
+                    <div class=" Grid-cell u-1of1">
+                        <p >以下为历史查询记录 </p>
+                    </div>
+                </li>
+                <li class="item Grid" >
+                    <div class="last Grid-cell u-1of1">
+                        <p class="name">美元/日元 </p>
+                        <p class="symbol">UDS/JPY</p>
+                    </div>
+                    <div class=" Grid-cell u-1of5">已添加</div>
+                </li>
+                <li class="item" >
+                    <div class="last Grid-cell u-1of1">
+                        <div class="name">日海通讯 </div>
+                        <div class="symbol">002218</div>
+                    </div>
+                    <div class=" Grid-cell u-1of5 "> <i class="yo-ico ">&#xf04f;</i></div>
+                </li>
+            </ul>
+           
+        </div>
+         <section class="m-layer">
+            <ul class="yo-tabclear">
+                <li class="item " ><input type="button" value="清除历史记录" class="yo-btn yo-btn-c" ></li>
+                
+           </ul>
+        </section>
+    </div>
+
+<div class="cont" style="display: none;">
+    <div class="result" >
+    <div class="yo-group yo-list" >
+    <div class="scroll-wrap" >
+        <ul class="yo-list" >
+            <li class="item Grid" >
+                <div class="last Grid-cell u-1of1">
+                    <p class="name">美元/日元 </p>
+                    <p class="symbol">UDS/JPY</p>
+                </div>
+                <div class=" Grid-cell u-1of5">已添加</div>
+            </li>
+            <li class="item" >
+                <div class="last Grid-cell u-1of1">
+                    <div class="name">日海通讯 </div>
+                    <div class="symbol">002218</div>
+                </div>
+                <div class=" Grid-cell u-1of5 "> <i class="yo-ico ">&#xf04f;</i></div>
+            </li>
+        </ul>
+    </div>
+    </div></div>
+    </div>
+
+</div></div>
+
+
+
+
+
+</script>
+</body>
+</html>
