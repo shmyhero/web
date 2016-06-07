@@ -5,26 +5,26 @@
   <title>交易 </title>
   <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
   <meta name="format-detection" content="telephone=no,email=no" />
-  <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+  <link rel="stylesheet" href="./style/yo-flex.css" />
 </head>
 <body>
-
+<div class="spinner active"></div>
   <div id="contcontainer" class="yo-flex contcontainer scroll-in"></div>
-  <script src="http://localhost:3000/webpack-dev-server.js"></script>
-  <script type="text/javascript" src="./dist/jquery.min.js"></script>
-  <script type="text/javascript" src="./dist/Tick.js"></script>
+
+  <script type="text/javascript" src="./dist/jquery.min.js"></script>\
   <script type="text/javascript" src="./dist/highstock.js"></script>
   <script type="text/javascript" src="./dist/jquery.signalR.core.js"></script>
   <script src="./dist/hubs.js"></script>
+  <script type="text/javascript" src="./dist/Tick.js"></script>
   <script type="text/javascript">
   function urlParse (e) {
     e = e.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var t = new RegExp("[\\?&]" + e + "=([^&#]*)"), n = t.exec(location.search);
     return null == n ? "" : decodeURIComponent(n[1])
-  } 
+  }
+
   $(function () {
       //21761
-      
       var securityId= urlParse("securityId")=="" ? '21535': urlParse("securityId");
       Highcharts.setOptions({
               global : {
@@ -38,23 +38,26 @@
                 shortMonths:['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
                 weekdays:['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
               },
-              colors: ['#5f97f6', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'] 
+              colors: ['#5f97f6', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
         });
         //'21761';//urlParse("securityId");
         $.getJSON('http://cfd-webapi.chinacloudapp.cn/api/security/'+securityId, function (result) {
            console.log(result);
            $(".p1").html(result.name+'('+ result.symbol +')');
            var classname='';
-           if(result.last !== result.open)
+           if(result.last !== result.preClose)
            {
-            classname=(result.last - result.open) > 0 ? "risePercent" :"fallPercent";
+            classname=(result.last - result.preClose) > 0 ? "risePercent" :"fallPercent";
           }else{
             classname='stopPercent';
           }
           $(".p2").addClass(classname);
-          $(".p2").addClass().html('<span>'+result.last +'</span> <span>'+ ((result.last - result.open) / result.open * 100).toFixed(2)+ '%</span>');
-          
-          draw(securityId,result.preClose); 
+          $(".p2").addClass().html('<span>'+result.last +'</span> <span>'+ ((result.last - result.preClose) / result.preClose * 100).toFixed(2)+ '%</span>');
+
+          draw(securityId,result.preClose);
+
+
+
         })
   });
 
@@ -65,20 +68,20 @@
             $.each(result, function (i, tick) {
               var t = new Date(tick.time);
 
-              if(i==0){
-                avg_pxyAxisMin = tick.p;
-                avg_pxyAxisMax = tick.p;
-              } 
-              else {
-                avg_pxyAxisMin = avg_pxyAxisMin > tick.p ? tick.p : avg_pxyAxisMin ;
-                avg_pxyAxisMax = avg_pxyAxisMax > tick.p ? avg_pxyAxisMax : tick.p ;
-              }
+              // if(i==0){
+              //   avg_pxyAxisMin = tick.p;
+              //   avg_pxyAxisMax = tick.p;
+              // }
+              // else {
+              //   avg_pxyAxisMin = avg_pxyAxisMin > tick.p ? tick.p : avg_pxyAxisMin ;
+              //   avg_pxyAxisMax = avg_pxyAxisMax > tick.p ? avg_pxyAxisMax : tick.p ;
+              // }
               data.push([t.getTime(), tick.p]);
             //Date.UTC(year,month,day,hours,minutes,seconds,millisec)
             //通过UTC方式获取指定时间的毫秒数，例如获取 2013-11-14 00:00:00的毫秒数代码如下：
             //time = Date.UTC(2013,11,14,0,0,0,0); // time = 1386979200000 (ms);
             //data.push([tick.time, tick.p]);
-            }); 
+            });
             $('#container0').highcharts('StockChart', {
              title: {
               text: ''
@@ -137,7 +140,7 @@
                   // align: 'left',
                   // x: 1,
                   // y: 1,
-                  formatter:function(){      
+                  formatter:function(){
                       //return  this.value;
                       //(100*(this.value-yesterdayClose)/yesterdayClose).toFixed(2)+"%";
                       return (100*(this.value/yesterdayClose-1)).toFixed(2)+"%";
@@ -230,23 +233,21 @@
             $.each(result, function (i, tick) {
               var t = new Date(tick.time);
 
-              if(i==0){
-                avg_pxyAxisMin = tick.p;
-                avg_pxyAxisMax = tick.p;
-              } 
-              else {
-                avg_pxyAxisMin = avg_pxyAxisMin > tick.p ? tick.p : avg_pxyAxisMin ;
-                avg_pxyAxisMax = avg_pxyAxisMax > tick.p ? avg_pxyAxisMax : tick.p ;
-              }
+              // if(i==0){
+              //   avg_pxyAxisMin = tick.p;
+              //   avg_pxyAxisMax = tick.p;
+              // }
+              // else {
+              //   avg_pxyAxisMin = avg_pxyAxisMin > tick.p ? tick.p : avg_pxyAxisMin ;
+              //   avg_pxyAxisMax = avg_pxyAxisMax > tick.p ? avg_pxyAxisMax : tick.p ;
+              // }
               data.push([t.getTime(), tick.p]);
             //Date.UTC(year,month,day,hours,minutes,seconds,millisec)
             //通过UTC方式获取指定时间的毫秒数，例如获取 2013-11-14 00:00:00的毫秒数代码如下：
             //time = Date.UTC(2013,11,14,0,0,0,0); // time = 1386979200000 (ms);
             //data.push([tick.time, tick.p]);
-            }); 
-
-
-$('#container1').highcharts('StockChart', {
+            });
+      $('#container1').highcharts('StockChart', {
              title: {
               text: ''
              },
@@ -304,7 +305,7 @@ $('#container1').highcharts('StockChart', {
                   // align: 'left',
                   // x: 1,
                   // y: 1,
-                  formatter:function(){      
+                  formatter:function(){
                       //return  this.value;
                       //(100*(this.value-yesterdayClose)/yesterdayClose).toFixed(2)+"%";
                       return (100*(this.value/yesterdayClose-1)).toFixed(2)+"%";
@@ -396,20 +397,20 @@ $('#container1').highcharts('StockChart', {
             $.each(result, function (i, tick) {
               var t = new Date(tick.time);
 
-              if(i==0){
-                avg_pxyAxisMin = tick.p;
-                avg_pxyAxisMax = tick.p;
-              } 
-              else {
-                avg_pxyAxisMin = avg_pxyAxisMin > tick.p ? tick.p : avg_pxyAxisMin ;
-                avg_pxyAxisMax = avg_pxyAxisMax > tick.p ? avg_pxyAxisMax : tick.p ;
-              }
+              // if(i==0){
+              //   avg_pxyAxisMin = tick.p;
+              //   avg_pxyAxisMax = tick.p;
+              // }
+              // else {
+              //   avg_pxyAxisMin = avg_pxyAxisMin > tick.p ? tick.p : avg_pxyAxisMin ;
+              //   avg_pxyAxisMax = avg_pxyAxisMax > tick.p ? avg_pxyAxisMax : tick.p ;
+              // }
               data.push([t.getTime(), tick.p]);
             //Date.UTC(year,month,day,hours,minutes,seconds,millisec)
             //通过UTC方式获取指定时间的毫秒数，例如获取 2013-11-14 00:00:00的毫秒数代码如下：
             //time = Date.UTC(2013,11,14,0,0,0,0); // time = 1386979200000 (ms);
             //data.push([tick.time, tick.p]);
-            }); 
+            });
 
         $('#container2').highcharts('StockChart', {
              title: {
@@ -469,7 +470,7 @@ $('#container1').highcharts('StockChart', {
                   // align: 'left',
                   // x: 1,
                   // y: 1,
-                  formatter:function(){      
+                  formatter:function(){
                       //return  this.value;
                       //(100*(this.value-yesterdayClose)/yesterdayClose).toFixed(2)+"%";
                       return (100*(this.value/yesterdayClose-1)).toFixed(2)+"%";
@@ -556,5 +557,5 @@ $('#container1').highcharts('StockChart', {
 }
 
 </script>
-</body> 
+</body>
 </html>

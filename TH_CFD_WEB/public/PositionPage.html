@@ -5,26 +5,24 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<!--     如果设置为 default，状态栏将为正常的，即白色，网页从状态栏以下开始显示；
+如果设置为 black，状态栏将为黑色，网页从状态栏以下开始显示；
+如果设置为 black-translucent，状态栏将为灰色半透明，网页将充满整个屏幕，状态栏会盖在网页之上； -->
+    <link rel="stylesheet" href="./style/yo-flex.css" />
+
     <style type="text/css">
         #tab-content{  background-color: #fff; }
         #Suggest{  z-index: 1000; }
-       
-        .drag-handle {
-            margin-right: 10px;
-            font: bold 20px Sans-Serif;
-        }
-        #container{ height: 260px; width: 100%; }
+
+        #container{ height: 260px; width: 100%; padding-top: 0.2rem;}
+
     </style>
 </head>
 <body>
-      
-<div  id="TestTip"></div>
-<div  class=" bookmark" id="bookmark">
-</div>
-    <div  class="none Suggest">
-        <div class=" yo-flex " id="Suggest"></div>
-    </div>
+<div class="spinner active"></div>
+<div id="horizontal-1"></div>
 <div class="yo-flex content">
     <header class="yo-header m-header">
         <h2 class="title">我的交易</h2>
@@ -33,16 +31,15 @@
     </header>
     <section class="m-layer">
             <ul class="yo-Htab">
-                <li class="item item-on" id="li0">持仓 <span class="bot1"></span><span class="top2"></span></li>
-                <li class="item " id="li1">平仓 <span class="bot1"></span><span class="top2"></span></li>
-                <li class="item " id="li2">统计 </li>
+                <li class="item item-on item-y-ico " id="li0">持仓<i class="yo-ico bot"> <img src="./images/triangle.png" ></i> </li>
+                <li class="item item-y-ico " id="li1">平仓 <i class="yo-ico bot"> <img src="./images/triangle.png" ></i> </li>
+                <li class="item item-y-ico " id="li2">统计</li>
            </ul>
+
     </section>
     <div class="flex" id="tab-content">
-   
-     </div>
+    </div>
     <section class="yo-tab yo-tab-view m-tabview">
-          
         <a href="index.php" class="item item-y-ico ">
             <i class="yo-ico">&#xf04f;</i>
             首页
@@ -56,14 +53,17 @@
             交易
         </a>
         <a href="mywenda.html" class="item item-y-ico ">
-            <i class="yo-ico yypf-ico">&#xE80D;</i>
+            <i class="yo-ico">&#xf052;</i>
             问答
         </a>
     </section>
 </div>
-<script src="http://localhost:3000/webpack-dev-server.js"></script>
+
 <script type="text/javascript" src="./dist/jquery.min.js"></script>
-<script type="text/javascript" src="./dist/highcharts.js"></script>
+<script type="text/javascript" src="./dist/highstock.js"></script>
+<script type="text/javascript" src="./dist/jquery.signalR.core.js"></script>
+<script src="./dist/hubs.js"></script>
 <script type="text/javascript" src="./dist/PositionTab.js"></script>
+
 </body>
 </html>

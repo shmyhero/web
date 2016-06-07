@@ -1,5 +1,5 @@
 var React = require("react");
-React.initializeTouchEvents(true);
+//React.initializeTouchEvents(true);
 
 var PickerColumn = React.createClass({
   propTypes :{

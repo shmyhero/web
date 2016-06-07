@@ -1,13 +1,10 @@
 var React = require("react");
 var LogicData = require("LogicData");
 var Storage = require("Storage");
-
-var Base = require("Base");
 var ScrollLoadmore = React.createClass({
     propTypes :{
         loadingTitle    : React.PropTypes.string,                              //加载标题
         dataURL         : React.PropTypes.string,                             //数据url
-        datas           : React.PropTypes.element,                   
         loadoverTitle   : React.PropTypes.string,                              //加载完成标题
         hasMore         : React.PropTypes.bool,                              //还有更多
         header          : React.PropTypes.bool,                               //涨跌榜
@@ -16,28 +13,26 @@ var ScrollLoadmore = React.createClass({
     },
     getInitialState : function(){
         return {
-            isLoading : false, 
+            isLoading : false,
             stockInfo:[],
-            datas : [],
             sortType: this.props.header ? 0: -1,
             rowStockInfoData: [],
-            
+
         }
     },
     getDefaultProps : function(){
         return {
-            datas : [],
             elements : [],
             isLoading : false,
             isOwnStockPage: false,
             hasMore : false,
             header : false,
-            liheader : null, 
+            liheader : null,
             isGainer : true,
             loadingTitle  : "正在加载更多. . . ",
             loadoverTitle : "没有更多信息. . . "
         }
-    },  
+    },
     getShownStocks: function() {
         var result = ''
         for (var i = 0; i < this.state.rowStockInfoData.length; i++) {
@@ -52,7 +47,7 @@ var ScrollLoadmore = React.createClass({
         var hasUpdate = false
         for (var i = 0; i < this.state.rowStockInfoData.length; i++) {
             for (var j = 0; j < realtimeStockInfo.length; j++) {
-                if (this.state.rowStockInfoData[i].id == realtimeStockInfo[j].id && 
+                if (this.state.rowStockInfoData[i].id == realtimeStockInfo[j].id &&
                             this.state.rowStockInfoData[i].last !== realtimeStockInfo[j].last) {
                     this.state.rowStockInfoData[i].last = realtimeStockInfo[j].last;
                     hasUpdate = true;
@@ -66,38 +61,39 @@ var ScrollLoadmore = React.createClass({
                 stockInfo: this.state.rowStockInfoData
             })
         }
-    }, 
+    },
     componentWillMount:function(){
-        
+        $('.spinner').removeClass('active');
         if(!this.props.isOwnStockPage) {
             $.ajax({
-                url : this.props.dataURL + '?page=1&perPage=20',
+                url : this.props.dataURL + '?page=1&perPage=999',
                 data : null,
                 dataType : 'json',
                 async : false,
                 success : function(data) {
                     //this.props.datas=data;
-                    //console.log(data);
+                   $('.spinner').removeClass('active');
                     this.setState({
-                                rowStockInfoData
-                                : data,
+                                rowStockInfoData: data,
                                 stockInfo: data
                                 //this.sortRawData(this.state.sortType, data)
                             })
                 }.bind(this),
                 error : function(XMLHttpRequest,textStatus, errorThrown) {
+                        $('.spinner').removeClass('active');
                         console.log(XMLHttpRequest);
                 }
             });
         }else{
                     var userData = LogicData.getUserData();
                    $.ajax({
-                        url : this.props.dataURL + '?page=1&perPage=20',
+                        url : this.props.dataURL + '?page=1&perPage=999',
                         headers: {Authorization: 'Basic ' + userData.userId + '_' + userData.token},
                         data : null,
                         dataType : 'json',
                         async : false,
                         success : function(data) {
+                            console.log(data);
                             LogicData.setOwnStocksData(data)
                             var value = LogicData.loadOwnStocksData()
                               if (value !== null) {
@@ -110,7 +106,7 @@ var ScrollLoadmore = React.createClass({
                         error : function(XMLHttpRequest,textStatus, errorThrown) {
                             console.log(XMLHttpRequest);
                         }
-                    }); 
+                    });
         }
     },
     componentDidMount:function(){
@@ -137,7 +133,7 @@ var ScrollLoadmore = React.createClass({
         });
     },
     sortRawData: function(newType, data) {
-        
+
         if (data===undefined) {
             data = this.state.rowStockInfoData
         }
@@ -181,13 +177,13 @@ var ScrollLoadmore = React.createClass({
         } else {
             return (
                     <div >
-                        <span >跌幅</span>
+                        <span >涨幅</span>
                         <span className="fallPercent"> ↑ </span>
                     </div>);
         }
     },
     onLoadmore : function(){
-                        
+
                       var value = LogicData.loadOwnStocksData()
                       if (value !== null) {
                           LogicData.setOwnStocksData(value);
@@ -201,62 +197,76 @@ var ScrollLoadmore = React.createClass({
         var scrollHeight = $scroll[0].scrollHeight;
         var scrollTop =  $scroll[0].scrollTop;
         var height =$scroll.height();
-        if(!this.props.isLoading) {
-            if ((height + scrollTop) >= scrollHeight) {
-                //this.onLoadmore;
-                this.props.isLoading = true;
-                this.setState({
-                    isUpdate: this.state.isUpdate
-                })
-                // if (this.props.loadCallBack) {
-                //         this.props.loadCallBack();
-                //      }
-            }
-        }
+        // console.log(scrollHeight);
+        //  console.log(scrollTop);
+        // if(!this.props.isLoading) {
+        //     if ((height + scrollTop) >= scrollHeight) {
+        //         //this.onLoadmore;
+        //         this.props.isLoading = true;
+        //         this.setState({
+        //             isUpdate: this.state.isUpdate
+        //         })
+        //         // if (this.props.loadCallBack) {
+        //         //         this.props.loadCallBack();
+        //         //      }
+        //     }
+        // }
     },
     replacetotickview: function(securityId) {
-        //LogicData.addStockToOwn(this.state.stockInfo[rowID]);
         window.location.replace('tickview.html?securityId='+securityId);
     },
-
+    addStockToOwnNULL: function() {
+      $(".Suggest").show();
+      $(".content").hide();
+    },
     render : function(){
         var o = this;
-        var newElements = this.state.stockInfo.map(function(rowData,index){
+        var newElements=null;
+        if(this.state.stockInfo.length>0)
+        {
+        newElements = this.state.stockInfo.map(function(rowData,index){
+          var currency = rowData.tag ===undefined ?  null :  ( <span className="currency">US</span> );
            return (
-                <li className="item Grid" onClick={o.replacetotickview.bind(this,rowData.id)}>
+                <li className="item Grid" key={index} onClick={o.replacetotickview.bind(this,rowData.id)}>
                                <div className="last Grid-cell u-1of21" >
                                     <div className="name"> {rowData.name} </div>
-                                    <div className="symbol"><span className="currency">US</span> {rowData.symbol}</div>
+                                    <div className="symbol">{currency} {rowData.symbol}</div>
                                 </div>
-                                <div className="Price Grid-cell u-1of41"> {rowData.last.toFixed(4)}</div>
-                                <div className={"Percent Grid-cell u-1of51 "+( rowData.last === rowData.open ? "stopPercent" : ((rowData.last - rowData.open) > 0 ? "risePercent" :"fallPercent"))   }> 
+                                <div className="Price Grid-cell u-1of41"> {rowData.last}</div>
+                                <div className={"Percent Grid-cell u-1of51 "+( rowData.last === rowData.open ? "stopPercent" : ((rowData.last - rowData.open) > 0 ? "risePercent" :"fallPercent"))   }>
                                     {((rowData.last - rowData.open) / rowData.open * 100).toFixed(2)}%
                                 </div>
                 </li>
             )
         }, this);
+      }else{
+        if(this.props.isOwnStockPage) {
+          newElements= (
+            <div className="yo-tipOwnStock" key={'Ownnull'} onClick={o.addStockToOwnNULL}> <img src="./images/add.png" /> </div>
+           )
+        }
+      }
         var elements=[];
         elements.push(newElements);
 
             //涨跌榜支持
-         var liheader = null;    
+         var liheader = null;
         if(this.props.header) {
                 liheader = (
-                    <li className="label  Grid" onClick={this.handlePress}> 
+                    <li className="label  Grid" onClick={this.handlePress}>
                     <div className=" Grid-cell u-1"> 涨跌榜 </div>
-                    <div className=" Grid-cell u-2">{ this.renderSortText()} </div> 
+                    <div className=" Grid-cell u-2">{ this.renderSortText()} </div>
                      </li>
                 )
             }
 
-        //onScroll={this.props.hasMore?this.onScroll : null }
         return (
-            <section className="m-list scroll-in" >
+            <section className="m-list scroll-in"  onScroll={this.onScroll}>
                  <ul className="yo-list">
                 {liheader}
                 {elements}
                  </ul>
-                
+
              </section>
         )
     }

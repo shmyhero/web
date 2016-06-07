@@ -1,6 +1,6 @@
 /**
- * 用node 开启3000单口
- * 加载webpack.config.js 配置项，搭建热加载开发环境
+ * 脫脙node 驴陋脝么3000碌楼驴脷
+ * 录脫脭脴webpack.config.js 脜盲脰脙脧卯拢卢麓卯陆篓脠脠录脫脭脴驴陋路垄禄路戮鲁
  */
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
@@ -10,10 +10,9 @@ new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
     historyApiFallback: true
-}).listen(3000, 'localhost', function (err, result) {
+}).listen(3001, 'localhost', function(err, result) {
     if (err) {
         console.log(err);
     }
-    console.log('3000端口已开启');
+    console.log('3001露脣驴脷脪脩驴陋脝么');
 });
-

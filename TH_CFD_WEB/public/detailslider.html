@@ -1,21 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
 
-    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+    <link rel="stylesheet" href="./style/yo-flex1.css" />
     <style type="text/css">
-        #tab-content{ height: 85%; background-color: #fff; }
-        .div {  
-            width: 400px;height: 20px;
-            background: linear-gradient(0deg, transparent, transparent 45%, red, transparent 55%, transparent 100%);   
-            background-size: 20px 20px;  
-            background-repeat: no-repeat;  
-            }
-        #container{ height: 260px; }
+
 			h1{
 				 color:#333333 !important;
 				 display:block;
@@ -25,14 +18,14 @@
 				/* font-weight:400;*/
 				 line-height:100%;
 				 letter-spacing:normal;
-				 margin-top:17px;
+				 margin-top:12px;
 				 margin-right:0;
 				 margin-bottom:20px;
 				 margin-left:0;
 				 text-align:left;
 			}
 
-		
+
 			h3{
 				 color:#333333 !important;
 				 display:block;
@@ -47,10 +40,10 @@
 				 text-align:left;
 			}
 
-			
+
 			h4{
 				 color:#666666 !important;
-				display:block;
+				 display:block;
 				 font-size:14px;
 				 font-weight:normal;
 				 line-height:100%;
@@ -61,10 +54,18 @@
 				 margin-left:0;
 				 text-align:left;
 			}
-			
+
+      h6{
+                 margin-top:0;
+                 margin-right:0;
+                 margin-bottom:12px;
+                 margin-left:0;
+                 text-align:left;
+            }
+
 			.bodyContent{
 				color:#000000;
-				
+
 				font-size:17px;
 				line-height:24px;
 				padding-top:10px;
@@ -75,7 +76,7 @@
 			}
       .bodyContent p{padding-top:5px; padding-bottom:5px;}
 
-            @media only screen and (max-width: 480px){
+            @media only screen and (max-height: 480px){
 				h1{
 					 font-size:23px !important;
 					 line-height:100% !important;
@@ -90,34 +91,33 @@
 					 font-size:13px !important;
 					 line-height:100% !important;
 				}
-				
+
 				/* ======== Header Styles ======== */
-				.columnImage{
+				.bodyContent img{
 					height:auto !important;
-					 max-width:480px !important;
-					 width:100% !important;
-           
-        padding-top:12px;
-        padding-bottom:12px;
+					max-width:480px !important;
+					width:100% !important;
+          padding-top:12px;
+          padding-bottom:12px;
 				}
 			}
 
-			#show{  
-            position: absolute;  
-            width:100%;  
-            z-index: 200; 
-            background-color: #fff;
+			#show{
+            position: absolute;
+            width:100%;
+           z-index: 3002;
+            /*background-color: #fff;*/
             /*top: 50%;*/
-        }    
-        #photo{  
-            position: absolute;  
-            /*top:35px;  
+        }
+        #photo{
+            /*position: absolute; */
+            /*top:35px;
             left:35px;  */
-           /*border:1px solid red; */
-            cursor: pointer;  
+            /*border:1px solid red; */
+            cursor: pointer;
         }
          #photo img{ width: 100%; height:auto !important;}
-</style> 
+</style>
 
 </head>
 <body>
@@ -127,22 +127,27 @@
                <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
             	<tr>
                 	<td align="center" valign="top" id="bodyCell">
-                    	
+
                                 	<!-- BEGIN BODY // -->
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
                                         <tr>
                                             <td valign="top" class="bodyContent" >
-                                                <h1>放量大涨,沪指冲刺3000点</h1>
-                                                <h4>2016年5月13日 15:00 </h4>
-                                                <h6>收评：放量大涨,沪指冲刺3000点】</h6>
-                                                <p>❶沪指涨1.9%创业板涨3.7%，蛋卷指数涨0.04%
-                                                ❷茅台大涨3.5%，股价创历史新高；❸成交额重回5000亿，较上周五放量。</p>
-												<p>14：30  【快讯：中源协和停牌确与“魏则西”事件有关】从接近中源协和人士处确认，中源协和当日停牌的所核查事项确实和当前陷入舆论危机的莆田系医院不无 关联，如果不出意外，今天晚上应该会有一个核查结果的公告。（21世纪）  </p>
-												
-												<img  src="http://img1.gtimg.com/tech/pics/hv1/151/249/2063/134210221.png"  class="columnImage" />
-												
-                                               电话问了长安汽车投资者关系部，说是几点原因导致投资收益不及预期：1、除了长安福特，其他几家合资经营都不太好。2、有一定程度的计提。3、美国的会计方式和国内的有所不同。综合来看长安基本错过了最佳的业绩增长时间，二三季度宝马和大众新车上市对福特SUV销售会有很大影响，同时博瑞上市对CS75也有影响。当前的长安汽车价格不贵，但1-2年内不会有什么大的机会（除非和特斯拉合资）。清仓长安，持有5个月左右，盈利5%
-                                               <br /><br />
+                                                <h1>世界级社交投资平台ayondo登陆亚洲</h1>
+                                                <h4>2016年5月31日 15:00 </h4>
+                                                <h6>中国资本对接全球市场的机遇真正来临！</h6>
+                                                <p>国内经济放缓正促使中国公民和企业去海外寻找更多的财富增值渠道。Knight Frank的全球研究主管Liam Bailey称，过去三年里，中国投资者本着将资产多元化的初衷，加大了对海外资产的配置。
+                                                此外，随着美元加息预期的不断升温，人民币暂时步入贬值轨道，也促使一部分家庭开始加强美元资产的配置。
+                                                权威数据显示，截至2015年中期的十年间，中国投资者对海外地产、股票和债券的投资额达到1.03万亿美元。
+                                                在中国，78%以上的40岁投资者拟在未来12个月着重国际投资，大幅高于全球64%和亚洲74%的平均值，87%的年轻投资者对国际投资抱有同样的想法。有较高比例的投资者认为，未来海外市场提供的投资机会多于内地市场，对未来一年提供最佳投资机会的国家排名来看，依次为美国、澳洲、英国、新加坡、以及香港。
+                                                那么，中国投资者投资的主体主要包括那些呢？
+                                                </p>
+                                               <img  src="http://img1.gtimg.com/tech/pics/hv1/151/249/2063/134210221.png"   />
+                                                <p>1、股票：海外的股票市场非常多元化，很多国内投资者都自主注册海外账户进行投资。尤其是美国股票市场极其活跃，投资者可以因此追求高收益的同时，通过购买各行业的股票分散风险。截止2015年，美国官方报告显示，中国投资者持有美国股票3500亿，10年来对比中国持有的美国证券增长了18倍之多。
+                                                </p><p>2、金融衍生品：有一些投资者会关注一些海外金融衍生品，比如期货、期权、差价合约（CFD）等，取决于投资者的目的，如（对冲），所拥有的信息以及她们对标的价格和观点。海外衍生品市场市场和产品本身都比较成熟，产品体系完整。想要实现任何对冲风险的需求，基本上都能找到相应的产品作为工具。而相比之下，国内很多金融衍生品体系目前还不够完善，品种也不多，市场不成熟，如此投资机会也相对较少，难以帮助客户达到期望收益。
+                                                </p><p>3、基金：海外有很多大型全球基金公司，比如领航、贝莱德等，他们有千万级用户，管理上万亿资产。有些国内投资者就可以在香港或者通过海外开户来购买海外资金。海外基金不同于国内的地方在于，由专业性团队管理，体系成熟，平均费用低廉。海外投资基金投资于全球不同区域、各行各业，各种资产品类，国内投资者可以通过与海外高级投资顾问交流来取得专业信息进行判断。
+                                                </p><p>4、债券：很多人寻求有固定收益的金融产品，会选择观众一些海外债券品类。债券很多种，比如按期限划分，发行者，信用评级划分。从发行者角度，很多人会选择投资国债和企业债券。一般来讲，国债是风险最低的，当然为了追求收益稳定，收益的表现也可能没有其他品种突出。分析债券风险看信用评级，也是一个很好的参照，因为信用评级都是大型评级机构，比如Moodys和Fitch Group
+                                                </p><p>5、房地产：目前国内很多投资者已经在国外购置房产，一方面可能方便子女海外留学或者寻求更好的投资就业机会，另一方面则是为了增值海外投资资产份额。美国是房地产投资最受欢迎的地方，因为美国的经济及教育资源都对中国高净值人群吸引较大，其次是中国香港、澳大利亚、加拿大和英国。许多中国人在送子女上学的同时，便在大学城内购买一所公寓。当然，购买海外房产也有一些弊端，比如房地产作为投资工具， 他的流动性比较低，在需求的时候很难变现，房价下跌的时候，瞬间贬值较大，又不能马上卖出。再加上考虑汇率变动要素，有些人投资海外房产的收益可能不太乐观。
+                                                找到适合自己的投资方式，建立合理的交易目标和策略，灵活运用各种投资工具（比如做空），是中国投资者在全球市场成功交易的必须课。</p>
                                             </td>
                                         </tr>
                                     </table>
@@ -154,30 +159,33 @@
      </div>
     <section  className="m-footlayer">
        <header class=" yo-foot m-header">
-        <p class="title"><span class="pageid"></span> / <span class="pagecount"></span></p> 
+        <p class="title"><span class="pageid"></span> / <span class="pagecount"></span></p>
         <span class="regret  yo-ico prevBtn">&#xf07d;</span>
         <span class="affirm yo-ico nextBtn">&#xf07f;</span>
-    </header> 
-        
+    </header>
+
     </section>
 
    <div class="pop1" >
-    <div id="show"  style="display: none;">  
-        <div id="photo" >  
-            <img />  
-        </div>  
+    <div id="show"  style="display: none;">
+        <div id="photo" >
+            <img />
+        </div>
     </div>
-    </div> 
+    </div>
 </div>
 <script type="text/javascript" src="./dist/jquery.min.js"></script>
-    <script type="text/javascript"> 
+    <script type="text/javascript">
     	function urlParse (e) {
             e = e.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var t = new RegExp("[\\?&]" + e + "=([^&#]*)"), n = t.exec(location.search);
             return null == n ? "" : decodeURIComponent(n[1])
-         } 
+         }
         $(document).ready(function(){
-           var pagecount=50;
+
+          $("body").height(window.innerHeight);
+
+           var pagecount=2;
            var pageid= urlParse("pageid") == "" ? 1: parseInt(urlParse("pageid"));
            $(".pageid").html(pageid);
            $(".pagecount").html(pagecount);
@@ -186,6 +194,8 @@
            		$(".yo-foot .regret").css('color','#e7e7e7')
            }
            else{
+               $(".bodyContent h1").html('如何建立合理的交易目标和策略');
+                $(".bodyContent h6").html('灵活运用各种投资工具，是中国投资者在全球市场成功交易的必须课');
            		$(".yo-foot .regret").css('color','#888f9c')
            }
            if(pageid===pagecount){
@@ -194,10 +204,10 @@
            		$(".yo-foot .affirm").css('color','#888f9c')
            }
 
-	       $(".yo-foot .prevBtn").click(function(){ 
+	       $(".yo-foot .prevBtn").click(function(){
 	       		if(pageid>1){
 	        		pageid= pageid-1;
-	        		window.location.replace('detailslider.html?pageid='+pageid);	
+	        		window.location.replace('detailslider.html?pageid='+pageid);
 	        	}
 	       });
 
@@ -208,29 +218,31 @@
 	        	}
 	    	});
 
-            $(".bodyContent img").click(function(){  
-                 $(".pop1").show();  
-                $("#show").fadeIn(300);  //显示图片效果  
-                //设置显示放大后的图片位置  
-                //document.getElementById("show").style.left=$(window).width()/2-300; 
-                //console.log(); 
-                $("#show").css("top",$(window).height()/2 - $(this).height()/2);
-                $("#show").css("height",$(this).height());
-                //$("#show").style.top= ;  
-                //获得图片路径  
-                var photo_url=$(this).attr("src");  
-                //设置图片路径  
-                $("#photo").find("img").attr("src",photo_url);  
-                //单击放大后的图片消失  
-                $(".pop1").click(function(){
-                	$(".pop1").hide();    
-                    $("#show").fadeOut(300); //图片消失效果  
-                });  
-            });  
+        $(".bodyContent img").click(function(){
+                  $(".pop1").show();
+                  $("#show").fadeIn(300);  //显示图片效果
+                  //设置显示放大后的图片位置
+                  //document.getElementById("show").style.left=$(window).width()/2-300;
+                  alert($(window).height()/2 - $(this).height()/2);
+                  console.log($(window).height()/2 - $(this).height()/2);
+                  $("#show").css("top",$(window).height()/2 - $(this).height()/2);
+
+                  //$("#show").css("height",$(this).height());
+                  //$("#show").style.top= ;
+                  //获得图片路径
+                  var photo_url=$(this).attr("src");
+                  //设置图片路径
+                  $("#photo img").attr("src",photo_url);
+                  //单击放大后的图片消失
+                  $(".pop1").click(function(){
+                  $(".pop1").hide();
+                  $("#show").fadeOut(300); //图片消失效果
+                });
+            });
 
 
-});  
-    </script> 
+});
+    </script>
 
 
 </body>

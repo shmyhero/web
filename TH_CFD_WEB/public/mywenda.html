@@ -4,81 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <meta name="format-detection" content="telephone=yes"/> 
-    <link rel="stylesheet" href="./prd/yo/usage/export/yo-flex.css" />
+    <meta name="format-detection" content="telephone=yes"/>
+    <link rel="stylesheet" href="./style/yo-flex.css" />
     <style type="text/css">
-        
-        #tab-content{ height: 85%; background-color: #fff; }
-        .background{
-                background-image: url('./images/background.png') ;
-                background-position:center ;
-                background-repeat:no-repeat;
-                filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";  
-                -moz-background-size:auto 100%;  
-                    background-size: auto 100% ;  
-                background-color: #b2b2b2;
+
+  .background{
+                 height: 24%;
+                 background-color: #1a61dd;
             }
+            @media only screen and (max-height: 480px){
+              .background{
+                             height: 30%;
+                             background-color: #1a61dd;
+                        }
+            }
+            @media only screen and (max-height: 567){
+              .background{
+                             height: 26%;
+                             background-color: #1a61dd;
+                        }
+            }
+
     details {
         width: 100%;
         padding: 0.05rem 0 0.05rem 0;
-
-    } 
+    }
     summary {
         cursor: pointer;
         width: 100%;
         outline:none;
-        display:block;            
-    } 
+        display:block;
+    }
     summary:before {
-        content: ""; 
-    } 
+        content: "";
+    }
     details summary::-webkit-details-marker { display:none; }
-    summary .summary{ font-size:0.16rem; color:#000000;}
+    summary .summary{ font-size:0.16rem; color:#000000;    margin-right: .15rem;}
     summary i {float:right; color:#888f9c;}
     details .textp{padding: 0.1rem 0.1rem 0.1rem 0; font-size:0.14rem; color:#6d6d6d; line-height:0.3rem;}
-    #opinion{  z-index: 1000; background-color:#eeeeee;color: #000 }
+    #opinion{ /*height: 100%;*/ background-color:#eeeeee;color: #000 }
     .m-list {background-color:#fff;}
     textarea{resize:none;width: 95%; border: 0px; margin: 0.05rem 0.1rem 0 0.1rem;}
     #word{color:#6d6d6d; padding-right: 0.1rem;}
     .yo-input{height:auto;padding:0;border:0;text-align: right; padding-right: 0.1rem;}
-:-moz-placeholder { color: #7f7f7f;  }::-moz-placeholder { /* Mozilla Firefox 19+ */ color: #7f7f7f;}
-input:-ms-input-placeholder,textarea:-ms-input-placeholder {color: #7f7f7f;}
-input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #7f7f7f;}
-/*style="color:#7f7f7f;"*/
-</style> 
+    :-moz-placeholder { color: #7f7f7f;  }::-moz-placeholder { /* Mozilla Firefox 19+ */ color: #7f7f7f;}
+          input:-ms-input-placeholder,textarea:-ms-input-placeholder {color: #7f7f7f;}
+          input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #7f7f7f;}
+          /*style="color:#7f7f7f;"*/
+
+</style>
 
 </head>
 <body>
-   
-  <div class="none yo-flex opinion" id="opinion">
-     <header class="yo-header m-header" >
-        <span class="title" >意见反馈</span>
-        <span class="regret  yo-ico yypf-ico ">&#xE802;</span>
-        <span class="affirm wancheng" style="color:#3e86ff"  >提交</span>
-    </header>
-    <div class="flex wenda" >
-           <section class="m-list " >
-           <textarea name="con" id="weibo" cols="45" rows="6" placeholder="请描述你的问题"></textarea>
-            </section>
-            <section class="m-list " style="text-align: right">  <div id="word">320</div>  </section>
-         
-           <div style="width:100%;height:10px;margin:0px auto;padding:0px;background-color:#eeeeee;overflow:hidden;"></div>
-           <section class="m-list" >
-            <div style="padding: 0.09rem 0 0.09rem 0;"> <span style="padding-left: 0.1rem; color:#7f7f7f;" >手机号</span>   <input type="text" class="yo-input"  maxlength="11" style="float:right;"  placeholder="选填，便于我们给你回复" /> <div>
-          </section>
 
-          <section  >
-            <div style="padding: 0.08rem 0 0.08rem 0; text-align: center"> <span style=" color:red;" class="errmsg" ></span>   <div>
-          </section>
 
-    </div>
-</div>
    <div class="content yo-flex">
     <header class="yo-header yo-header-normal1 m-header background" >
-      
+      <header class="yo-header m-header">
+        <p class="title">问答</p>
+    </header>
        <section class="yo-WDtab yo-WDtab-view m-tabview">
-            <a href="tel:114" class="item item-y-ico ">
+            <a href="tel:021-66058771" class="item item-y-ico ">
                 <i class="yo-ico"><img style="width:0.49rem;height:0.49rem" src="./images/phone.png"></i>
                 电话沟通
             </a>
@@ -91,14 +77,14 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #7f
     <div class="flex " id="tab-content">
          <section class="m-list" >
           <ul class="yo-list">
-            <li class="item "> 
+            <li class="item ">
                 <div class="name">热门问题</div>
             </li>
            <ul>
         </section>
          <section class="m-list ">
             <ul class="yo-list examples yo-list-group">
-            <li class="item "> 
+            <li class="item ">
                 <details>
                 <summary ><span class="summary ">什么是CFD</span> <i style="" class="yo-ico ">&#xf031;</i>
                  </summary>
@@ -106,7 +92,7 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #7f
                     CFD实际上是客户与交易商签署执行的合约，是对一个金融产品未来走势的合约</p>
                 </details>
             </li>
-            <li class="item "> 
+            <li class="item ">
                 <details>
                 <summary ><span class="summary ">CFD产品有哪些特点</span> <i  class="yo-ico ">&#xf031;</i>
                  </summary>
@@ -115,7 +101,7 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #7f
 3）CFD合约只对相关的金融产品的未来价格产生约束，而不涉及相关的金融产品的实体和所有权</p>
                 </details>
             </li>
-            <li class="item "> 
+            <li class="item ">
                 <details>
                 <summary ><span class="summary ">CFD交易的优势有哪些？</span> <i  class="yo-ico ">&#xf031;</i>
                  </summary>
@@ -128,52 +114,47 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #7f
   7）CFD交易可以投资全球所有的金融交易市场</p>
                 </details>
             </li>
-            <li class="item "> 
+            <li class="item ">
                 <details>
-                <summary ><span class="summary ">盈交易平台的提供交易的种类主要有哪些？</span> <i  class="yo-ico ">&#xf031;</i>
+                <summary ><span class="summary ">盈交易平台提供交易的种类主要有哪些？</span> <i  class="yo-ico ">&#xf031;</i>
                  </summary>
-                <p class="textp ">美股，外汇，指数，港股，商品</p>
+                <p class="textp ">美股，外汇，指数，商品</p>
                 </details>
             </li>
-            <li class="item "> 
+            <li class="item ">
                 <details>
-                <summary ><span class="summary ">盈交易平台的主要有哪些功能</span> <i  class="yo-ico ">&#xf031;</i>
+                <summary ><span class="summary ">盈交易平台主要有哪些功能</span> <i  class="yo-ico ">&#xf031;</i>
                  </summary>
-                <p class="textp ">在线开户，模拟盘交易，实盘交易，我的交易个人中心，排行榜，行情列表，自选社区问答等</p>
+                <p class="textp ">行情列表，模拟交易，交易中心，常见问题</p>
                 </details>
             </li>
-            <li class="item "> 
+            <li class="item ">
                 <details>
                 <summary ><span class="summary ">盈交易平台手续费规则</span> <i  class="yo-ico ">&#xf031;</i>
                  </summary>
-                <p class="textp ">1）开仓费为投入本金的万分之六。<br/>
-2）平仓费为卖出金额的万分之六。<br/>
-3）留仓隔夜利息费为每日收盘价计算总市值的万分之六，每日收取（包括节假日）；商品不收取除留仓隔夜利息费。
-</p>
+                <p class="textp ">目前模拟交易平台开仓费，平仓费，留仓费均免费</p>
                 </details>
             </li>
-          <li class="item "> 
+          <li class="item ">
                 <details>
-                <summary ><span class="summary ">盈交易平台提供的CFD交易产品的杠杆范围</span> <i  class="yo-ico ">&#xf031;</i>
+                <summary ><span class="summary ">盈交易平台提供的CFD交易产品杠杆范围</span> <i  class="yo-ico ">&#xf031;</i>
                  </summary>
-                <p class="textp ">1）A股，杠杆大小范围：2-10<br/>
-2）美股，杠杆大小范围：2-20<br/>
-3）港股，杠杆大小范围：2-20<br/>
-4）外汇，杠杆大小范围：2-50<br/>
-5）指数，杠杆大小范围：2-10<br/>
-6）商品，杠杆大小范围：2-10</p>
+                <p class="textp ">1）美股：杠杆范围1-10或1-20，每个商品杠杆由系统设定<br/>
+2）指数：杠杆范围1-100<br/>
+3）外汇:   杠杆范围1-100或1-125，每个商品杠杆由系统设定<br/>
+4）商品：黄金杠杆范围1-50，白银杠杆范围1-20</p>
                 </details>
             </li>
 
-            <li class="item "> 
+            <li class="item ">
                 <details>
                 <summary ><span class="summary ">盈交易平台交易的最低金额是多少？</span> <i  class="yo-ico ">&#xf031;</i>
                  </summary>
-                <p class="textp ">最低交易金额为10美金</p>
+                <p class="textp ">这个由交易商设定的每个商品的最低交易金额决定（交易金额= 本金X杠杆）</p>
                 </details>
             </li>
            <ul>
-            
+
         </section>
 
      </div>
@@ -191,12 +172,35 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #7f
             交易
         </a>
         <a href="mywenda.html" class="item item-y-ico item-on">
-            <i class="yo-ico yypf-ico">&#xE80D;</i>
+            <i class="yo-ico">&#xf052;</i>
             问答
         </a>
     </section>
 </div>
-<div  class="pop"> 
+  <div class=" yo-flex opinion" id="opinion">
+     <header class="yo-header m-header" >
+        <span class="title" >意见反馈</span>
+        <span class="regret  yo-ico yypf-ico ">&#xE802;</span>
+        <span class="affirm wancheng" style="color:#3e86ff"  >提交</span>
+    </header>
+    <div class="flex wenda" >
+           <section class="m-list " >
+           <textarea name="con" id="weibo" cols="45" rows="6" placeholder="请描述你的问题"></textarea>
+            </section>
+            <section class="m-list " style="text-align: right">  <div id="word">320</div>  </section>
+
+           <div style="width:100%;height:10px;margin:0px auto;padding:0px;background-color:#eeeeee;overflow:hidden;"></div>
+           <section class="m-list" >
+            <div style="padding: 0.09rem 0 0.09rem 0;"> <span style="padding-left: 0.1rem; color:#7f7f7f;" >手机号</span>   <input type="text" class="yo-input"  maxlength="11" style="float:right;"  placeholder="选填，便于我们给你回复" /> <div>
+          </section>
+
+          <section  >
+            <div style="padding: 0.08rem 0 0.08rem 0; text-align: center"> <span style=" color:red;" class="errmsg" ></span>   <div>
+          </section>
+
+    </div>
+</div>
+<div  class="pop">
             <div class="yo-tip1" >
                 <p ><div style="font-size: 0.16rem; padding-top: 0.1rem; font-weight:bolder;">提交成功</div>
             <div style="font-size: 0.12rem; padding-bottom: 0.13rem;">感谢你的反馈</div></p>
@@ -204,6 +208,7 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #7f
            <div style="width:100%;height:0.01rem;margin:0px auto;padding:0px;background-color:#d6d6da;overflow:hidden;"></div>
             <div style="font-size: 0.17rem;color:#1a61dd; padding-top: 0.1rem; ">确定</div>  </div>
          </div>
+
 <script type="text/javascript" src="./dist/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -213,11 +218,13 @@ $(document).ready(function(){
      //    $(this).siblings().toggle();
      //    $(this).parent('details').toggleClass('open');
      //  });
-       
+
+
+      //$(".spinner").removeClass('active');
      $("summary").click(function(){
 
         $(this).find(".yo-ico").html($(this).parent('details')[0].open ? "&#xf031;" : "&#xf027;");
-           
+
        });
 
       $("#weibo").keyup(function(){
@@ -232,7 +239,7 @@ $(document).ready(function(){
         $(this).val($(this).val().substring(0,320));
        }
        var num = 320 - len;
-
+       num= num <0 ? 0:num;
        $("#word").text(num);
     });
 
@@ -252,10 +259,10 @@ $(document).ready(function(){
                         success : function(data) {
                         }.bind(this),
                         error : function(XMLHttpRequest,textStatus, errorThrown) {}
-                    }); 
+                    });
             $(".pop").show();
         }
-           
+
     });
 
     $(".pop").click(function(){
@@ -268,20 +275,21 @@ $(document).ready(function(){
     });
 
 
-     $(".regret").click(function(){ 
+     $(".regret").click(function(){
         $(".content").show();
         $(".opinion").hide();
        });
 
 
     $(".yo-WDtab .feedback").click(function(){
+        $(".opinion").height(window.innerHeight);
         $(".opinion").show();
         $(".content").hide();
     });
 
-    
+
 });
-    
+
 
 </script>
 </body>

@@ -13,15 +13,18 @@ var Tip=React.createClass({
     },
     getInitialState: function(){
         return {
-            visible: false
+            visible: false,
+            showmessage: ''
+
         }
     },
     componentDidMount : function(){
         if(this.props.timeout>0){
-            window.setTimeout(this.onClose,this.props.timeout);
+            window.setTimeout(this.onClose,3000);
         }
         if(this.state.visible)
         {
+            this.state.showmessage=this.props.message;
             $(".pop2").show();
         }
     },
@@ -39,7 +42,7 @@ var Tip=React.createClass({
     show: function(transactionInfo) {
         console.log(transactionInfo);
         if (transactionInfo !== null) {
-            this.props.message=transactionInfo;
+            this.state.showmessage=transactionInfo;
 
         }
 
@@ -55,7 +58,7 @@ var Tip=React.createClass({
         }
         return (
           <div  className="pop2" onClick={this.onClose}  > 
-            <div className="yo-tip" > {this.props.message} </div>
+            <div className="yo-tip" > {this.state.showmessage} </div>
          </div>
         )
     }

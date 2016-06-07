@@ -12,6 +12,7 @@ var SearchBar = React.createClass({
         suggestUrl      : React.PropTypes.string                         //相关搜索请求
 
     },
+
     getDefaultProps : function(){
         return {
             isShowSearch : false
@@ -42,14 +43,14 @@ var SearchBar = React.createClass({
         if(this.props.isShowSearch){
             searchElement = (
                 <div className="search-bar">
-                
+
                 <div className="search-wrapper mt10">
                 <SearchBox isSuggest={this.props.isSuggest} suggestUrl={this.props.suggestUrl}
                         btnName={this.props.btnName} isFocus={true}
                         callback={this.searchCallBack} />
 
                 </div>
-               
+
                 </div>
             )
         }

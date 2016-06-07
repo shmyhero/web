@@ -26,10 +26,10 @@ switch (ISBASE) {
 		define('secret', 'e08d24b42f6295b0b82a2e5f38d1b9ad');
 		break;
 	case 4:
-		//迈和科技 404 
+		//迈和科技 404
 		define('BASE_URL',  'http://tradingsh.com/caizdTG/');
 		define('appid', 'wxb9271ad84fa589ca');
-		define('secret', '11b4c4e809f7cb2c51142e0afa2d49d5');   
+		define('secret', '11b4c4e809f7cb2c51142e0afa2d49d5');
 		break;
 	case 5:
 		//模拟炒股
@@ -38,8 +38,8 @@ switch (ISBASE) {
 		define('secret', '198481a9623696423327d5f1cc31b531');
 		break;
 	case 6:
-		//全民股神的小伙伴  
-		define('BASE_URL',  'http://myheroweb.com/TH_CFD_WEB/public/');
+		//全民股神的小伙伴
+		define('BASE_URL',  'http://myheroweb.com/TH_CFD_WEB/');
 		define('appid', 'wx7a5c26b43552c0f8');
 		define('secret', 'e90914dfcb8886d8a047c193c94dfcce');
 		break;
@@ -57,7 +57,7 @@ switch (ISBASE) {
 		break;
 	case 9:
 		//全民股神 大号
-		define('BASE_URL',  'http://cn.tradehero.mobi/TH_CFD_WEB/public/');
+		define('BASE_URL',  'http://cn.tradehero.mobi/TH_CFD_WEB/');
 		define('appid', 'wx992a0a8ce6ec3d2b');
 		define('secret', 'c10b4b200d1f375ccb494339440332da');
 		break;
@@ -139,4 +139,3 @@ define('DJ_amount', 10000);
 define('LAUNCH_START',time() >= strtotime('2015-05-07 00:00:00'));
 
 define('paomadeng', '4月14日三甲：@edithcat @不亦乐乎 @蛋蛋de忧桑 ，每人100元奖金');
-

@@ -41,7 +41,8 @@ var TipConfirm=React.createClass({
             invest: 0,
             leverage: 0,
             settlePrice: 0,
-            time: new Date()
+            time: new Date(),
+            transactionInfo: null
         }
     },
     componentDidMount : function(){
@@ -66,10 +67,11 @@ var TipConfirm=React.createClass({
                 name: transactionInfo.stockName,
                 isCreate: transactionInfo.isCreate,
                 isLong: transactionInfo.isLong,
-                invest: transactionInfo.invest,
+                invest: transactionInfo.invest.toFixed(2),
                 leverage: transactionInfo.leverage,
-                settlePrice: transactionInfo.settlePrice,
+                settlePrice: transactionInfo.settlePrice.toFixed(2),
                 time: transactionInfo.createAt,
+                transactionInfo:transactionInfo
             })
         }
         this.setState({
@@ -82,20 +84,20 @@ var TipConfirm=React.createClass({
        if (!this.state.visible) {
             return null
         }
-        // <div className=" Grid-cell u-1of5" >
-        //          {this.state.isCreate ? '':'0.00%'}
-        //         </div>
-        var tradeImage = this.state.isLong ? './images/dark_up.png' : './images/dark_down.png';
+        var pl = this.state.isCreate ? '' : this.state.transactionInfo.pl
+        var tradeImage = !this.state.isLong ? './images/dark_up.png' : './images/dark_down.png';
         return (
             <div  className="pop2" onClick={this.onClose}  > 
             <div className="yo-tip"  > 
                
                <ul className="yo-list">
-                <li   className="item3 Grid"> 
-                <div className="last1 Grid-cell u-1">
+                <li   className="item3 flexGrid"> 
+                <div className="last1 flexGrid-cell u-1">
                     <div className="name">{this.state.name} - {this.state.isCreate?'开仓':'平仓'} </div>
                 </div>
-                
+                { this.state.isCreate ? null :<div className="flexGrid-cell u-1of6 " >
+                        {(pl / this.state.invest * 100).toFixed(2)} %
+                </div>}
             </li>
             <li className="itemall flexGrid"> 
                 <div className="last1 flexGrid-cell u-1of3" >
@@ -117,8 +119,8 @@ var TipConfirm=React.createClass({
                     <div className="symbol extendTextBottom">{this.state.settlePrice}</div>
                 </div>
                 <div className="last1 flexGrid-cell u-1of3" >
-                    <div className="name extendTextTop aligncenter">止损</div>
-                    <div className="symbol extendTextBottom aligncenter">{this.state.invest}</div>
+                    <div className="name extendTextTop aligncenter">{this.state.isCreate?'最大风险':'盈亏'}</div>
+                    <div className="symbol extendTextBottom aligncenter">{this.state.isCreate? this.state.invest : pl}</div>
                 </div>
                 <div className="last1 flexGrid-cell u-1of3" >
                     <div className="name extendTextTop alignright"> {this.state.time.Format('yy/MM/dd')}</div>

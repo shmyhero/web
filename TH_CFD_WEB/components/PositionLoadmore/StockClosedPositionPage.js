@@ -6,25 +6,10 @@ var Tip = require("Tip");
 var Base = require("Base");
 var height = $(".slider-inner").height();
 var extendHeight = 0;
-var tempData = [
-    {id:13001, symbol:'AAPL UW', name:'新东方', tag: 'US', profitPercentage: 0.1},
-    {id:13001, symbol:'AAPL UW2', name:'新东方2', tag: 'US', profitPercentage: 0.05},
-    {id:13001, symbol:'AAPL UW3', name:'新东方3', profitPercentage: -0.08},
-    {id:13001, symbol:'AAPL UW4', name:'新东方4', profitPercentage: 0},
-    {id:13001, symbol:'AAPL UW5', name:'新东方5', tag: 'US', profitPercentage: 0.1},
-    {id:13001, symbol:'AAPL UW6', name:'新东方6', tag: 'US', profitPercentage: 0.05},
-    {id:13001, symbol:'AAPL UW7', name:'新东方7', profitPercentage: -0.08},
-    {id:13001, symbol:'AAPL UW8', name:'新东方8', profitPercentage: 0},
-    {id:13001, symbol:'AAPL UW9', name:'新东方9', tag: 'US', profitPercentage: 0.1},
-    {id:13001, symbol:'AAPL UW10', name:'新东方10', tag: 'US', profitPercentage: 0.05},
-    {id:13001, symbol:'AAPL UW11', name:'新东方11', profitPercentage: -0.08},
-    {id:13001, symbol:'AAPL UW12', name:'新东方12', profitPercentage: 0},
-]
 var StockClosedPositionPage = React.createClass({
     propTypes :{
         loadingTitle    : React.PropTypes.string,                              //加载标题
         dataURL         : React.PropTypes.string,                             //数据url
-        datas           : React.PropTypes.element,                   
         loadoverTitle   : React.PropTypes.string,                              //加载完成标题
         hasMore         : React.PropTypes.bool,                              //还有更多
         header          : React.PropTypes.bool,                               //涨跌榜
@@ -33,7 +18,7 @@ var StockClosedPositionPage = React.createClass({
     },
     getInitialState : function(){
         return {
-            stockInfo: tempData,
+            stockInfo: [],
             rowStockInfoData: [],
             selectedRow: -1,
             selectedSubItem: 0,
@@ -43,7 +28,6 @@ var StockClosedPositionPage = React.createClass({
     },
     getDefaultProps : function(){
         return {
-            datas : [],
             elements : [],
             isLoading : false,
             isOwnStockPage: false,
@@ -85,65 +69,68 @@ var StockClosedPositionPage = React.createClass({
         }
     },
     componentWillMount:function(){
-           //  var userData = LogicData.getUserData();
+            var userData = LogicData.getUserData();
            
-           //  //'Basic 9_083f416be4a64a15968841cdb75b60d1'
-           //  if(this.props.isOwnStockPage) {
-           //     $.ajax({
-           //      url : 'http://cfd-webapi.chinacloudapp.cn/api/position/open',
-           //      headers: {Authorization: 'Basic ' + userData.userId + '_' + userData.token},
-           //      data : null,
-           //      dataType : 'json',
-           //      async : false,
-           //      success : function(data) {
-           //          console.log(data);
-           //          this.setState({
-           //             rowStockInfoData: data,
-           //             stockInfo: data
-           //         })
-           //      }.bind(this),
-           //      error : function(XMLHttpRequest,textStatus, errorThrown) {
-           //          console.log(XMLHttpRequest);
-           //      }
-           //  });
-           // }
+            //'Basic 9_083f416be4a64a15968841cdb75b60d1'
+           
+               $.ajax({
+                url : NetConstants.GET_CLOSED_POSITION_API,
+                headers: {Authorization: 'Basic ' + userData.userId + '_' + userData.token},
+                data : null,
+                dataType : 'json',
+                async : false,
+                success : function(data) {
+                    console.log(data);
+                    this.setState({
+                       rowStockInfoData: data,
+                       stockInfo: data
+                   })
+                }.bind(this),
+                error : function(XMLHttpRequest,textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                }
+            });
        },
        componentDidMount:function(){
     },
 
     stockPressed: function(rowData, rowID) {
+      
         this.setState({
             showExchangeDoubleCheck: false,
         })
+        var newData = []
+
+        $.extend(true, newData, this.state.rowStockInfoData)    // deep copy
+        
         if (this.state.selectedRow == rowID) {
-           
-            //newData[rowID].hasSelected = false
+            
+            newData[rowID].hasSelected = false
             this.setState({
-                stockInfo: tempData,
+                stockInfo: newData,
                 selectedRow: -1,
-                
+                selectedSubItem: 0,
+                rowStockInfoData: newData
             })
         } else {
             // var maxY = (height-100)*20/21 - extendHeight
             // var listHeight = $(".slider-inner").height();
-            // if (this.state.selectedRow >=0) {
-            //     newData[this.state.selectedRow].hasSelected = false
-            //     //listHeight -= extendHeight
-            // }
+            if (this.state.selectedRow >=0) {
+                newData[this.state.selectedRow].hasSelected = false
+                //listHeight -= extendHeight
+            }
             // var currentY = listHeight/newData.length*(parseInt(rowID)+1)
             // if (currentY > maxY && parseInt(this.state.selectedRow) < parseInt(rowID)) {
                 
             //     $("#tab-content").scrollTop(Math.floor(currentY-maxY))
             // }
 
-            //newData[rowID].hasSelected = true
-
-            //LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+            newData[rowID].hasSelected = true
             this.setState({
-                stockInfo: tempData,
-                 selectedRow: rowID,
-                // selectedSubItem: 0,
-                // rowStockInfoData: newData,
+                stockInfo: newData,
+                selectedRow: rowID,
+                selectedSubItem: 0,
+                rowStockInfoData: newData,
             })
         }
     },
@@ -163,38 +150,6 @@ var StockClosedPositionPage = React.createClass({
         }
     },
 
-    okPress: function(rowData) {
-        console.log('okPress');
-        if (this.state.showExchangeDoubleCheck === false) {
-            this.setState({
-                showExchangeDoubleCheck: true,
-            })
-            return
-        }
-        var userData = LogicData.getUserData();
-        var url = NetConstants.POST_DELETE_POSITION_API;
-        //console.log({'posId':rowData.id,'securityId':rowData.security.id,'isPosLong':rowData.isLong,'posQty':rowData.quantity});
-        $.ajax({
-                 url : NetConstants.POST_DELETE_POSITION_API,
-                 type: 'POST',
-                 headers: {Authorization: 'Basic ' + userData.userId + '_' + userData.token},
-                 data : {'posId':rowData.id,'securityId':rowData.security.id,'isPosLong':rowData.isLong,'posQty':rowData.quantity},
-                 dataType : 'json',
-                 async : false,
-                 success : function(data) {
-                    console.log(data);
-                    this.loadOpenPositionInfo();
-                    data.stockName = rowData.security.name;
-                    data.isCreate = false;
-                    data.isLong = rowData.isLong;
-                    data.time = new Date(data.createAt);
-                    this.refs['confirmPage'].show(data)
-                    }.bind(this),
-                 error : function(XMLHttpRequest,textStatus, errorThrown) {
-                    console.log(XMLHttpRequest);
-                 }
-            }); 
-    },
     loadOpenPositionInfo: function() {
         var userData = LogicData.getUserData()
         $.ajax({
@@ -252,6 +207,10 @@ var StockClosedPositionPage = React.createClass({
                 }
             });
     },
+    getLastPrice: function(rowData) {
+    var lastPrice = rowData.isLong ? rowData.security.ask : rowData.security.bid
+    return lastPrice === undefined ? rowData.security.last : lastPrice
+    },
     renderDetailInfo: function(rowData) {
         var buttonEnable = true
         var tradeImage = rowData.isLong ? './images/dark_up.png' : './images/dark_down.png';
@@ -278,52 +237,28 @@ var StockClosedPositionPage = React.createClass({
                 </div>
                 <div className="last1 Grid-cell u-1of3" >
                     <div className="name aligncenter">本金</div>
-                    <div className="symbol aligncenter">100</div>
+                    <div className="symbol aligncenter">{rowData.invest.toFixed(2)}</div>
                 </div>
                 <div className="last1 Grid-cell u-1of3" >
                     <div className="name alignright">杠杆</div>
-                    <div className="symbol alignright">x10</div>
+                    <div className="symbol alignright">{rowData.leverage}</div>
                 </div> 
             </li>
             <li className="item1 Grid"> 
                 <div className="last1 Grid-cell u-1of3" >
                     <div className="name">开仓价格</div>
-                    <div className="symbol extendTextBottom">10.24</div>
+                    <div className="symbol extendTextBottom">{rowData.openPrice}</div>
                 </div>
                 <div className="last1 Grid-cell u-1of3" >
-                    <div className="name extendTextTop aligncenter">开仓费</div>
-                    <div className="symbol extendTextBottom aligncenter">0.24</div>
+                    <div className="name extendTextTop aligncenter">平仓价格</div>
+                    <div className="symbol extendTextBottom aligncenter">{rowData.closePrice}</div>
                 </div>
                 <div className="last1 Grid-cell u-1of3" >
-                    <div className="name extendTextTop alignright">16/03/24</div>
-                    <div className="symbol extendTextBottom alignright">13:30</div>
+                    <div className="name extendTextTop alignright">净收益</div>
+                    <div className="symbol extendTextBottom alignright">{rowData.pl.toFixed(2)}</div>
                 </div> 
             </li>
-           <li className="item1 Grid"> 
-                <div className="last1 Grid-cell u-1of3" >
-                    <div className="name">开仓价格</div>
-                    <div className="symbol extendTextBottom">10.24</div>
-                </div>
-                <div className="last1 Grid-cell u-1of3" >
-                    <div className="name extendTextTop aligncenter">开仓费</div>
-                    <div className="symbol extendTextBottom aligncenter">1.24</div>
-                </div>
-                <div className="last1 Grid-cell u-1of3" >
-                    <div className="name extendTextTop alignright">16/03/24</div>
-                    <div className="symbol extendTextBottom alignright">14:30</div>
-                </div> 
-            </li>
-             <li className="item1 Grid"> 
-                <div className="last1 Grid-cell u-1of3" >
-                    <div className="name">留仓费</div>
-                    <div className="symbol extendTextBottom">0.24</div>
-                </div>
-                <div className="last1 Grid-cell u-1of3" >
-                    <div className="name extendTextTop aligncenter">净收益</div>
-                    <div className="symbol extendTextBottom aligncenter netIncomeText">14.28</div>
-                </div>
-                
-            </li>
+           
             </ul>  
             );
 },
@@ -331,23 +266,22 @@ render : function(){
     var o = this;
     var newElements = this.state.stockInfo.map(function(rowData,index){
             
+            var currency = rowData.security.tag ===undefined ?  null :  ( <span className="currency">US</span> );    
             var liheader = null;    
             if(this.state.selectedRow === index) {
-                liheader = (
+                return (
                     <li className="item2 " >
                     <ul className="yo-list" >
                     <li className="item1 Grid" onClick={o.stockPressed.bind(this,rowData,index)}> 
-                        <div className="last Grid-cell u-1of21" >
-                            <div className="name"> {rowData.name} </div>
-                            <div className="symbol"><span className="currency">US</span> {rowData.symbol}</div>
-                        </div>
-                        <div className={"Price Grid-cell u-1of51 "}> 
-                            111
-                        </div> 
-                        <div className={"Percent Grid-cell u-1of51 "+( rowData.profitPercentage===0 ? "stopPercent" : (rowData.profitPercentage > 0 ? "risePercent" :"fallPercent"))   }> 
-                       {(rowData.profitPercentage * 100).toFixed(2)}%
-                        </div> 
-                    </li>
+                                <div className="last Grid-cell  u-1of21" >
+                                    <div className="name"> {rowData.security.name} </div>
+                                    <div className="symbol">{currency} {rowData.security.symbol}</div>
+                                </div>
+                                <div className="Price Grid-cell u-1of41"> {rowData.pl.toFixed(2)}</div>
+                                <div className={"Percent Grid-cell u-1of51 "+( rowData.pl == 0 ? "stopPercent" : (rowData.pl > 0 ? "risePercent" :"fallPercent"))   }> 
+                                    {( rowData.pl / rowData.invest * 100).toFixed(2)}%
+                                </div>  
+                            </li>
                     <li>
                      {o.renderDetailInfo(rowData)}
                     </li>
@@ -355,25 +289,21 @@ render : function(){
                     </li>
                     )
             }else{
-                liheader = (
-                    <li className="item Grid" onClick={o.stockPressed.bind(this,rowData,index)}>
-                    <div className="last Grid-cell u-1of21" >
-                    <div className="name"> {rowData.name} </div>
-                    <div className="symbol"><span className="currency">US</span> {rowData.symbol}</div>
-                    </div>
-                    <div className={"Price Grid-cell u-1of51 "}> 
-                            111
+                return (
+                   <li className="item Grid" key={index}   onClick={o.stockPressed.bind(this,rowData,index)}>
+                        <div className="last Grid-cell  u-1of21" >
+                        <div className="name"> {rowData.security.name} </div>
+                        <div className="symbol">{currency} {rowData.security.symbol}</div>
+                        </div>
+                        <div className="Price Grid-cell u-1of41"> {rowData.pl.toFixed(2)}</div>
+                        <div className={"Percent Grid-cell u-1of51 "+( rowData.pl == 0 ? "stopPercent1" : (rowData.pl > 0 ? "risePercent1" :"fallPercent1"))   }> 
+                        {( rowData.pl / rowData.invest * 100).toFixed(2)}%
                         </div> 
-                    <div className={"Percent Grid-cell u-1of51 "+( rowData.profitPercentage===0 ? "stopPercent" : (rowData.profitPercentage > 0 ? "risePercent" :"fallPercent"))   }> 
-                    {(rowData.profitPercentage * 100).toFixed(2)}%
-                    </div> 
                     </li>
                     )
             }
 
-            return (
-                {liheader}
-                )
+            
     }, this);
     var elements=[];
     elements.push(newElements);
