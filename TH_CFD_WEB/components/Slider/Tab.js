@@ -6,7 +6,7 @@ var ScrollLoadmore = require("ScrollLoadmore");
 var SearchBox = require("SearchBox");
 var Sortable = require("Sortable");
 
-var tabNames = ['自选', '美股', '指数', '外汇', '现货']
+var tabNames = ['自选', '美股', '指数', '外汇', '商品']
 var SERVER_IP = 'http://cfd-webapi.chinacloudapp.cn';
 var GET_USER_BOOKMARK_LIST_API = SERVER_IP + '/api/security/bookmark';
 var GET_US_STOCK_TOP_GAIN_API = SERVER_IP + '/api/security/stock/topGainer';

@@ -83,6 +83,8 @@ var Sortable = React.createClass({
          });
          valArr=valArr.substring(0,valArr.length-1);
          var OwnStockstr = localStorage.getItem("StockToOwn");
+         console.log(valArr);
+         console.log(OwnStockstr);
          if(valArr!==OwnStockstr)
          {
                 $.ajax({

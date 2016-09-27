@@ -96,7 +96,7 @@ a,img{-webkit-touch-callout:none}
     padding: 0.1rem 0;
 }
 
-.yo-WDtab{display:-webkit-box;display:-webkit-flex;display:flex;overflow:hidden;height:1rem;/*border-radius:1px;*/-webkit-background-clip:padding-box!important;background-clip:padding-box!important;border-width:0 0 0 0;border-style:solid;font-size:.14rem;text-align:center;line-height:.44rem; /*margin-top: .1rem; */}
+.yo-WDtab{display:-webkit-box;display:-webkit-flex;display:flex;overflow:hidden;height:1rem;/*border-radius:1px;*/-webkit-background-clip:padding-box!important;background-clip:padding-box!important;border-width:0 0 0 0;border-style:solid;font-size:.14rem;text-align:center;line-height:.44rem; margin-top: .15rem; }
 .yo-WDtab>.item{display:block;-webkit-box-flex:1;-webkit-flex:1;flex:1;width:.1px;position:relative;color:#fff}
 .yo-WDtab>.item:not(:last-child)::after{position:absolute;top:50%;right:0;-webkit-transform:translatey(-50%);transform:translatey(-50%);width:1px;height:100%;background-color:transparent;content:"\0020"}
 .yo-WDtab>.item-y-ico{/*padding-top:.04rem;*//*line-height:.2rem*/}

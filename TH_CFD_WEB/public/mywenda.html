@@ -11,46 +11,65 @@
   .background{
                  height: 24%;
                  background-color: #1a61dd;
+                 background: url('images/question1.png') no-repeat 50% / cover;
+                 width: 100%;
+                 -webkit-background-size: cover;
+                 -moz-background-size: cover;
+                 -o-background-size: cover;
+                 background-size: cover;
             }
-            @media only screen and (max-height: 480px){
+           .background .yo-header1 {
+    position: relative;
+    height: .5rem;
+    line-height: .5rem;
+    /* background-color: #1a61dd; */
+    color: #fff;
+    font-size: .19rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+@media only screen and (max-height: 480px){
               .background{
                              height: 30%;
                              background-color: #1a61dd;
                         }
-            }
-            @media only screen and (max-height: 567){
+}
+@media only screen and (max-height: 567){
               .background{
                              height: 26%;
                              background-color: #1a61dd;
                         }
-            }
-
-    details {
-        width: 100%;
-        padding: 0.05rem 0 0.05rem 0;
-    }
-    summary {
-        cursor: pointer;
-        width: 100%;
-        outline:none;
-        display:block;
-    }
-    summary:before {
-        content: "";
-    }
-    details summary::-webkit-details-marker { display:none; }
-    summary .summary{ font-size:0.16rem; color:#000000;    margin-right: .15rem;}
-    summary i {float:right; color:#888f9c;}
-    details .textp{padding: 0.1rem 0.1rem 0.1rem 0; font-size:0.14rem; color:#6d6d6d; line-height:0.3rem;}
-    #opinion{ /*height: 100%;*/ background-color:#eeeeee;color: #000 }
-    .m-list {background-color:#fff;}
-    textarea{resize:none;width: 95%; border: 0px; margin: 0.05rem 0.1rem 0 0.1rem;}
-    #word{color:#6d6d6d; padding-right: 0.1rem;}
-    .yo-input{height:auto;padding:0;border:0;text-align: right; padding-right: 0.1rem;}
-    :-moz-placeholder { color: #7f7f7f;  }::-moz-placeholder { /* Mozilla Firefox 19+ */ color: #7f7f7f;}
-          input:-ms-input-placeholder,textarea:-ms-input-placeholder {color: #7f7f7f;}
-          input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #7f7f7f;}
-          /*style="color:#7f7f7f;"*/
+}
+details {
+ width: 100%;
+ padding: 0.05rem 0 0.05rem 0;
+}
+summary {
+ cursor: pointer;
+ width: 100%;
+ outline:none;
+ display:block;
+}
+summary:before {
+ content: "";
+}
+details summary::-webkit-details-marker { display:none; }
+summary .summary{ font-size: 0.16rem;
+ color: #000000;
+ /* margin-right: .15rem; */
+ width: 95%;
+ float: left;}
+ summary i {float:right; color:#888f9c;}
+ details .textp{padding: 0.1rem 0.1rem 0.1rem 0; font-size:0.14rem; color:#6d6d6d; line-height:0.3rem;}
+ #opinion{ display: none;   background-color:#fff;color: #000 }
+ .m-list {background-color:#fff;}
+ textarea{resize:none;width: 95%; border: 0px; margin: 0.05rem 0.1rem 0 0.1rem;}
+ #word{color:#6d6d6d; padding-right: 0.1rem;}
+ .yo-input{height:auto;padding:0;border:0;text-align: right; padding-right: 0.1rem;width: 80%;}
+ :-moz-placeholder { color: #7f7f7f;  }::-moz-placeholder { /* Mozilla Firefox 19+ */ color: #7f7f7f;}
+ input:-ms-input-placeholder,textarea:-ms-input-placeholder {color: #7f7f7f;}
+ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #7f7f7f;}
 
 </style>
 
@@ -59,11 +78,16 @@
 
 
    <div class="content yo-flex">
-    <header class="yo-header yo-header-normal1 m-header background" >
-      <header class="yo-header m-header">
-        <p class="title">问答</p>
+<!--     <header class="yo-header m-header" >
+        <span class="title" >问答</span>
+       <span class="regret  yo-ico"></span>
+       <span class="affirm yo-ico feedback" ><img style=" width:29px;height:29px" src="./images/feedback1.png"></span>
+    </header> -->
+    <header class="yo-header yo-header-normal1 m-header background feedback" >
+      <header class="yo-header1 m-header">
+        <p class="title">意见反馈</p>
     </header>
-       <section class="yo-WDtab yo-WDtab-view m-tabview">
+      <!--  <section class="yo-WDtab yo-WDtab-view m-tabview">
             <a href="tel:021-66058771" class="item item-y-ico ">
                 <i class="yo-ico"><img style="width:0.49rem;height:0.49rem" src="./images/phone.png"></i>
                 电话沟通
@@ -72,90 +96,93 @@
                 <i class="yo-ico"><img style="width:0.49rem;height:0.49rem" src="./images/feedback.png"></i>
                 意见反馈
             </a>
-        </section>
+        </section> -->
     </header>
     <div class="flex " id="tab-content">
-         <section class="m-list" >
+         <section class="m-list" style="margin-top: -15px;">
           <ul class="yo-list">
             <li class="item ">
                 <div class="name">热门问题</div>
             </li>
            <ul>
         </section>
-         <section class="m-list ">
-            <ul class="yo-list examples yo-list-group">
-            <li class="item ">
-                <details>
-                <summary ><span class="summary ">什么是CFD</span> <i style="" class="yo-ico ">&#xf031;</i>
-                 </summary>
-                <p class="textp ">CFD的全称就是contracts for differences，可以成为差价合约或者价差合约，
-                    CFD实际上是客户与交易商签署执行的合约，是对一个金融产品未来走势的合约</p>
-                </details>
-            </li>
-            <li class="item ">
-                <details>
-                <summary ><span class="summary ">CFD产品有哪些特点</span> <i  class="yo-ico ">&#xf031;</i>
-                 </summary>
-                <p class="textp ">1）客户的目的是赚取这个金融产品未来走势完成的价格和当前价格的价差。而不是真的想要拥有这种金融产品<br/>
-2）CFD交易可以交易现在世界上已经存在的任何一个投资品种，交易种类包括股票，股指，期货，债券，外汇，利率等<br/>
-3）CFD合约只对相关的金融产品的未来价格产生约束，而不涉及相关的金融产品的实体和所有权</p>
-                </details>
-            </li>
-            <li class="item ">
-                <details>
-                <summary ><span class="summary ">CFD交易的优势有哪些？</span> <i  class="yo-ico ">&#xf031;</i>
-                 </summary>
-                <p class="textp ">1）双向交易，就是可以买入做多或者卖出做空，CFD交易时可以先卖出再择机买回<br/>
-  2）由于CFD不涉及所有权，所以手续费相对较低，不需要缴纳印花税，期货的交割费用等，只需要少量的点差<br/>
-  3）所有的CFD交易产品都可以用保证金方式进行杠杆操作，不需要投入全额资金，通常只需要1%-10%的保证金即可<br/>
-  4）CFD交易可以进行分散投资，从而降低风险的小额交易<br/>
-  5）与交易公司行使合约，成交快速且止损相对有保证<br/>
-  6）客户只需要和一家公司行使合约，在一个交易平台用同一账户通过互联网就可以自助完成外汇，期货，股票，指数，利率等几乎所有投资品种的交易<br/>
-  7）CFD交易可以投资全球所有的金融交易市场</p>
-                </details>
-            </li>
-            <li class="item ">
-                <details>
-                <summary ><span class="summary ">盈交易平台提供交易的种类主要有哪些？</span> <i  class="yo-ico ">&#xf031;</i>
-                 </summary>
-                <p class="textp ">美股，外汇，指数，商品</p>
-                </details>
-            </li>
-            <li class="item ">
-                <details>
-                <summary ><span class="summary ">盈交易平台主要有哪些功能</span> <i  class="yo-ico ">&#xf031;</i>
-                 </summary>
-                <p class="textp ">行情列表，模拟交易，交易中心，常见问题</p>
-                </details>
-            </li>
-            <li class="item ">
-                <details>
-                <summary ><span class="summary ">盈交易平台手续费规则</span> <i  class="yo-ico ">&#xf031;</i>
-                 </summary>
-                <p class="textp ">目前模拟交易平台开仓费，平仓费，留仓费均免费</p>
-                </details>
-            </li>
+        <section class="m-list ">
+          <ul class="yo-list examples yo-list-group">
+           <li class="item ">
+            <details>
+              <summary > <div class="summary ">Q：盈交易和欧洲社交金融集团ayondo的关系？</div> <i style="" class="yo-ico ">&#xf031;</i>
+              </summary>
+              <p class="textp ">A：盈交易是欧洲著名的金融社交投资集团Ayondo(受英国和德国联邦金融监管局监管，持有FCA全牌照)旗下，全中文界面的移动交易平台。</p>
+            </details>
+          </li>
+
           <li class="item ">
-                <details>
-                <summary ><span class="summary ">盈交易平台提供的CFD交易产品杠杆范围</span> <i  class="yo-ico ">&#xf031;</i>
-                 </summary>
-                <p class="textp ">1）美股：杠杆范围1-10或1-20，每个商品杠杆由系统设定<br/>
-2）指数：杠杆范围1-100<br/>
-3）外汇:   杠杆范围1-100或1-125，每个商品杠杆由系统设定<br/>
-4）商品：黄金杠杆范围1-50，白银杠杆范围1-20</p>
-                </details>
-            </li>
+            <details>
+              <summary ><div class="summary ">Q：盈交易的交易平台可信吗？有FCA（英国金融行为监管局）编号吗？</div> <i style="" class="yo-ico ">&#xf031;</i>
+              </summary>
+              <p class="textp ">A：盈交易是欧洲著名的金融社交投资集团Ayondo旗下的中文交易平台；Ayondo受到英国金融行为监管局、德国联邦金融监管局的一级监控，持有FCA全牌照，编号：184333，具体可以登陆英国金融行为监管局官网查询（网址：https://register.fca.org.uk）</p>
+            </details>
+          </li>
 
+
+
+          <li class="item ">
+            <details>
+              <summary ><div class="summary ">Q：什么是CFD交易？</div> <i style="" class="yo-ico ">&#xf031;</i>
+              </summary>
+              <p class="textp ">A：CFD，即为差价合约，反映股票或指数的价格变化并提供价格变动所带来的盈利或亏损，而无须实际拥有股票或指数期货，一般采用保证金交易；CFD最初只是大机构的一种有效规避证券风险的工具，目前已成为全球投资者的一种普通投资工具。<br>
+                CFD的历史差价合约的出现在20世纪70年代，并在2000年成为相对主流的交易品种。CFD是以掉期交易形式出现，80年代主要集中在银行间和大机构之间交易。1999年正式在境外零售市场交易，2000年在英国推出英国股票差价合约。目前越来越多的投资者使用差价合约CFD作为交易组合的一部分获股票实物交易的一种替代。</p>
+              </details>
+            </li>
             <li class="item ">
-                <details>
-                <summary ><span class="summary ">盈交易平台交易的最低金额是多少？</span> <i  class="yo-ico ">&#xf031;</i>
-                 </summary>
-                <p class="textp ">这个由交易商设定的每个商品的最低交易金额决定（交易金额= 本金X杠杆）</p>
+              <details>
+                <summary ><div class="summary ">Q：CFD交易相比普通股票和期货交易的有什么区别和优势？</div> <i  class="yo-ico ">&#xf031;</i>
+                </summary>
+                <p class="textp ">A：CFD（为差价合约），反映股票或指数的价格变化并提供价格变动所带来的盈利或亏损，而无须实际拥有股票或指数期货。其相对传统股票和期货交易具有很多优势：<br>
+                  双向交易，同时支持做多和做空。CFD让投资者在熊市时同样有获利机会﹐而且也可以利用做空来对冲实股市场的多头风险。<br>
+                  交易成本低。不需要缴纳印花税、交割费用，仅需少量点差。<br>
+                  可以进行分散投资，从而降低风险的小额交易；<br>
+                  交易门槛低。保证金交易，不需要投入全额资金，是普通投资者也可以使用的对冲工具。（
+                  投资品种丰富。可以进行全球金融市场的股票、指数、期货、外汇、利率等交易；</p>
                 </details>
-            </li>
-           <ul>
-
-        </section>
+              </li>
+              <li class="item ">
+                <details>
+                  <summary ><div class="summary ">Q：我在盈交易平台开通的实盘账户及账户里的资金是受保护的吗？</div> <i  class="yo-ico ">&#xf031;</i>
+                  </summary>
+                  <p class="textp ">A：Ayondo是英国金融行为监管局和德国联邦金融监管局的成员。该组织为每位客户提供最多至50万英镑的资金保险。此外，Ayondo客户的最大损失不会超过账户余额，从而得到最高级别的保护。</p>
+                </details>
+              </li>
+              <li class="item ">
+                <details>
+                  <summary ><div class="summary ">Q：我在盈交易进行交易，盈交易怎么保护我的隐私数据？</div> <i  class="yo-ico ">&#xf031;</i>
+                  </summary>
+                  <p class="textp ">A：Ayondo严用最先进的安全防护措施来保管投资者信息。投资者的个人信息全部经过加密并被安全存储。</p>
+                </details>
+              </li>
+              <li class="item ">
+                <details>
+                  <summary ><div class="summary ">Q：账户交易有最低的限额吗？我需要入多少钱才可以开始交易？</div> <i  class="yo-ico ">&#xf031;</i>
+                  </summary>
+                  <p class="textp ">A：进行交易的最低金额为2000元人民币，入金达到或超过该金额即可进行交易。</p>
+                </details>
+              </li>
+              <li class="item ">
+                <details>
+                  <summary ><div class="summary ">Q：盈交易平台的交易成本高吗？分为哪些交易费用？</div> <i  class="yo-ico ">&#xf031;</i>
+                  </summary>
+                  <p class="textp ">A：盈交易平台沿用ayondo在欧洲成熟市场的费用标准，0佣金，仅有少量的点差成本。</p>
+                </details>
+              </li>
+              <li class="item ">
+                <details>
+                  <summary ><div class="summary ">Q：盈交易平台各各交易品种的交易时间？为什么有时候部分投资品种无法交易？</div> <i  class="yo-ico ">&#xf031;</i>
+                  </summary>
+                  <p class="textp ">A：不同市场存在差异，以全球各交易所行情列表开闭市时间为准，部分品种闭市时间无法交易。</p>
+                </details>
+              </li>
+              <ul>
+              </section>
 
      </div>
      <section class="yo-tab yo-tab-view m-tabview">
@@ -213,18 +240,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
       $(".opinion").hide();
-     // $("details").each(function() {
-     //  $(this).find("summary").show().click(function() {
-     //    $(this).siblings().toggle();
-     //    $(this).parent('details').toggleClass('open');
-     //  });
 
-
-      //$(".spinner").removeClass('active');
      $("summary").click(function(){
-
         $(this).find(".yo-ico").html($(this).parent('details')[0].open ? "&#xf031;" : "&#xf027;");
-
        });
 
       $("#weibo").keyup(function(){
@@ -262,7 +280,6 @@ $(document).ready(function(){
                     });
             $(".pop").show();
         }
-
     });
 
     $(".pop").click(function(){
@@ -281,7 +298,7 @@ $(document).ready(function(){
        });
 
 
-    $(".yo-WDtab .feedback").click(function(){
+    $(".feedback").click(function(){
         $(".opinion").height(window.innerHeight);
         $(".opinion").show();
         $(".content").hide();

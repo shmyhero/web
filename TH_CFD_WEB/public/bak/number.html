@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+    <link href="./style/h5base.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./style/yo-flex.css" />
+<style type="text/css">
+#table_0909099{text-align:center;width:100%;height:160px;border-top:1px solid #CECDCE;background-color:#FFF;}
+#table_0909099 td{width:33%;border:1px solid #ddd;border-right:0;border-top:0;}
+#table_0909099 td:hover{background-color:#1FB9FF;color:#FFF;}
+</style>
+</head>
+<body>
+<p>You have viewed this page <span id="count">0</span>  time(s).</p>
+<p><input type="button" value="changeStorage" onClick="changeS()"/></p>
+
+
+
+<script type="text/javascript" src="./dist/keyboard.js"></script>
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script>
+var Storage = {
+        setItem : function(k,v){
+        　　localStorage.setItem(k,v);
+            var se = document.createEvent("StorageEvent");
+            se.initStorageEvent('storage', false, false, k, null, v);
+            window.dispatchEvent(se);
+        },
+        removeItem : function(k){
+        　　localStorage.removeItem(k);
+            var se = document.createEvent("StorageEvent");
+            
+            se.initStorageEvent('storage', false, false);
+            window.dispatchEvent(se);
+
+        },
+        getItem : function(k){
+            //...
+            return localStorage.getItem(k);
+            // var se = document.createEvent("StorageEvent");
+            // se.initStorageEvent('storage', false, false);
+            // window.dispatchEvent(se);
+        }
+      }
+Storage.setItem('a',1);
+window.addEventListener("storage",function(e){
+     console.log(e);
+      console.log(Storage.getItem('b'));
+      document.getElementById("count").innerHTML = parseInt(Storage.getItem('b'))+1;
+},false);
+
+
+ //递归显示object
+ // if(!obj){return;}
+ // for(var i in obj){
+ //  if(typeof(obj[i])!="object" || obj[i]==null){
+ //   document.write(i + " : " + obj[i] + "<br/>");
+ //  }else{
+ //   document.write(i + " : object" + "<br/>");
+ //  }
+
+//storage.setItem("a",5);
+function changeS(){
+  // 
+  //修改一个键值，测试storage事件
+  //document.getElementById("count").innerHTML = parseInt(storage.getItem('b'));
+  //Storage.removeItem('test');
+  //if(!Storage.getItem("b")){Storage.setItem("b",0);}
+  Storage.setItem('b',parseInt(Storage.getItem('b'))+1);
+}
+
+</script>
+<script>
+$(function(){
+
+ 
+   });
+</script>
+</body>
+</html>

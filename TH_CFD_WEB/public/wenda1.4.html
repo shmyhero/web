@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <meta name="format-detection" content="telephone=yes"/>
+  <link rel="stylesheet" href="./style/yo-flex1.css" />
+
+  <style type="text/css">
+
+    .background{
+     height: 1.2rem;
+     background-color: #1a61dd;
+     /*background: url('images/question1.png') no-repeat 50% / cover;*/
+     width: 100%;
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+   }
+   .background .yo-header1 {
+     position: relative;
+     height: .6rem;
+     line-height: .75rem;
+     /* background-color: #1a61dd; */
+     color: #fff;
+     font-size: .19rem;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     text-align: center;
+   }
+
+   details {
+    width: 100%;
+    padding: 0.05rem 0 0.05rem 0;
+  }
+  summary {
+    cursor: pointer;
+    width: 100%;
+    outline:none;
+    display:block;
+  }
+  summary:before {
+    content: "";
+  }
+  details summary::-webkit-details-marker { display:none; }
+  summary .summary{ font-size: 0.16rem;
+    color: #000000;
+    /* margin-right: .15rem; */
+    width: 95%;
+    float: left;}
+    summary i {float:right; color:#888f9c;}
+    details .textp{padding: 0.1rem 0.1rem 0.1rem 0; font-size:0.14rem; color:#6d6d6d; line-height:0.3rem;}
+    #opinion{ display: none;   background-color:#fff;color: #000 }
+    .m-list {background-color:#fff;}
+    textarea{resize:none;width: 95%; border: 0px; margin: 0.05rem 0.1rem 0 0.1rem;}
+    #word{color:#6d6d6d; padding-right: 0.1rem;}
+    .yo-input{height:auto;padding:0;border:0;text-align: right; padding-right: 0.1rem;width: 80%;}
+    :-moz-placeholder { color: #7f7f7f;  }::-moz-placeholder { /* Mozilla Firefox 19+ */ color: #7f7f7f;}
+    input:-ms-input-placeholder,textarea:-ms-input-placeholder {color: #7f7f7f;}
+    input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {color: #7f7f7f;}
+    /*style="color:#7f7f7f;"*/
+
+
+
+    .CFDproduct{ display: none; }
+    .safety{ display: none; }
+    .transaction{ display: none; }
+
+
+    .features {
+      background-color: #f8f8f8;
+      width: 100%;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      /* background-attachment: fixed; */
+      position: relative;
+    }
+
+    .features-header{
+      min-height: 1.1rem;
+      background-color: #1962dd;
+      width: 100%;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      /* background-attachment: fixed; */
+      position: relative;
+    }
+
+    .features-foot{
+      min-height: 5.3rem;
+      background-color: #f8f8f8;
+      width: 100%;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      /* background-attachment: fixed; */
+      position: relative;
+    }
+
+    .features-body{
+      position: absolute;
+      z-index: 2;
+      bottom: .2rem;
+      left: 0;
+      height: 6.2rem;
+      width: 92%;
+      background-color: #fff;
+      font-size: .12rem;
+      text-align: center;
+      margin: 0 .15rem;
+      border-radius: .03rem;
+      -moz-box-shadow:1px 1px 1px #f8f8f8;
+      -webkit-box-shadow:1px 1px 1px #f8f8f8;
+      box-shadow:1px 1px 1px #f8f8f8;
+    }
+
+
+
+    .features-header1{
+      min-height: 1.1rem;
+      background-color: #1962dd;
+      width: 100%;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      /* background-attachment: fixed; */
+      position: relative;
+    }
+
+    .features-foot1{
+      min-height: 2rem;
+      background-color: #f8f8f8;
+      width: 100%;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      /* background-attachment: fixed; */
+      position: relative;
+    }
+
+    .features-body1{
+      position: absolute;
+      z-index: 2;
+      bottom: .2rem;
+      left: 0;
+      height: 2.9rem;
+      width: 92%;
+      background-color: #fff;
+      font-size: .12rem;
+      text-align: center;
+      margin: 0 .15rem;
+      border-radius: .03rem;
+      -moz-box-shadow:1px 1px 1px #f8f8f8;
+      -webkit-box-shadow:1px 1px 1px #f8f8f8;
+      box-shadow:1px 1px 1px #f8f8f8;
+    }
+
+
+    .features-header2{
+      min-height: 1.1rem;
+      background-color: #1962dd;
+      width: 100%;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      /* background-attachment: fixed; */
+      position: relative;
+    }
+
+    .features-foot2{
+      min-height: 1.6rem;
+      background-color: #f8f8f8;
+      width: 100%;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      /* background-attachment: fixed; */
+      position: relative;
+    }
+
+    .features-body2{
+      position: absolute;
+      z-index: 2;
+      bottom: .2rem;
+      left: 0;
+      height: 2.5rem;
+      width: 92%;
+      background-color: #fff;
+      font-size: .12rem;
+      text-align: center;
+      margin: 0 .15rem;
+      border-radius: .03rem;
+      -moz-box-shadow:1px 1px 1px #f8f8f8;
+      -webkit-box-shadow:1px 1px 1px #f8f8f8;
+      box-shadow:1px 1px 1px #f8f8f8;
+    }
+
+
+    .stats {
+      padding: 1px 0 0 0;
+    }
+
+
+    .headp {
+      font-size: .19rem;
+      padding-top: .15rem; color:#1962dd;
+    }
+
+
+    .bodyp {
+      font-size: .15rem;
+      color: #666666;
+      margin: .1rem .15rem 0 ;
+      line-height: .28rem;
+      text-align: left;
+    }
+
+    .static{
+      background-color: #1962dd;
+      width: 100%;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      /* background-attachment: fixed; */
+      line-height: .28rem;
+      padding: 0 .15rem .3rem;
+      position: relative;
+    }
+
+    h4{ margin: 0 auto;  color: #fff;font-size: 0.17rem; font-weight:bold; }
+
+    .content {
+      font-size: 0.14rem;
+      color: #b7d6ff; }
+
+      .div4{
+       color:#fff !important;
+       font-size:17px;
+       padding-top: 35px;
+       margin-bottom: -5px;
+     }
+     .div4 .logo{ float:left; background-color: #7ca2f8 ;height: 18px;width:4px; line-height: 18px;}
+     .div4 .time{float:left;    line-height: 21px;
+      text-align: left;
+      color: #fff;
+      margin-left: 3px;}
+    </style>
+  </head>
+  <body>
+   <div class="wenda yo-flex">
+    <div class="headerdiv" style="width:100%;height:14px;margin:0px auto;padding:0px;background-color:#1a61dd;overflow:hidden;"></div>
+    <header class="yo-header m-header" >
+      <span class="title" >帮助中心</span>
+      <a href="cfd://page/back" class="regret  contentregret yo-ico" ><img style=" width:20px;height:14px" src="./images/back.png"></a>
+    </header>
+    <header class="yo-header yo-header-normal1 m-header background " >
+
+      <section class="yo-WDtab yo-WDtab-view m-tabview">
+        <a  class="item item-y-ico CFDproductck">
+          <i class="yo-ico"><img style="width:0.49rem;height:0.49rem" src="./images/CFDproduct.png"></i>
+          CFD产品
+        </a>
+        <a  class="item item-y-ico safetyck">
+          <i class="yo-ico"><img style="width:0.49rem;height:0.49rem" src="./images/safety.png"></i>
+          安全保障
+        </a>
+        <a  class="item item-y-ico transactionck">
+          <i class="yo-ico"><img style="width:0.49rem;height:0.49rem" src="./images/transaction.png"></i>
+          交易规则
+        </a>
+      </section>
+    </header>
+    <div class="flex " >
+     <section class="m-list"  >
+      <ul class="yo-list">
+        <li class="item ">
+          <div class="name">热门问题</div>
+        </li>
+        <ul>
+        </section>
+        <section class="m-list ">
+          <ul class="yo-list examples yo-list-group">
+           <li class="item ">
+            <details>
+              <summary > <div class="summary ">Q：盈交易和欧洲社交金融集团ayondo的关系？</div> <i style="" class="yo-ico ">&#xf031;</i>
+              </summary>
+              <p class="textp ">A：盈交易是欧洲著名的金融社交投资集团Ayondo(受英国和德国联邦金融监管局监管，持有FCA全牌照)旗下，全中文界面的移动交易平台。</p>
+            </details>
+          </li>
+
+          <li class="item ">
+            <details>
+              <summary ><div class="summary ">Q：盈交易的交易平台可信吗？有FCA（英国金融行为监管局）编号吗？</div> <i style="" class="yo-ico ">&#xf031;</i>
+              </summary>
+              <p class="textp ">A：盈交易是欧洲著名的金融社交投资集团Ayondo旗下的中文交易平台；Ayondo受到英国金融行为监管局、德国联邦金融监管局的一级监控，持有FCA全牌照，编号：184333，具体可以登陆英国金融行为监管局官网查询（网址：https://register.fca.org.uk）</p>
+            </details>
+          </li>
+
+
+
+          <li class="item ">
+            <details>
+              <summary ><div class="summary ">Q：什么是CFD交易？</div> <i style="" class="yo-ico ">&#xf031;</i>
+              </summary>
+              <p class="textp ">A：CFD，即为差价合约，反映股票或指数的价格变化并提供价格变动所带来的盈利或亏损，而无须实际拥有股票或指数期货，一般采用保证金交易；CFD最初只是大机构的一种有效规避证券风险的工具，目前已成为全球投资者的一种普通投资工具。<br>
+                CFD的历史差价合约的出现在20世纪70年代，并在2000年成为相对主流的交易品种。CFD是以掉期交易形式出现，80年代主要集中在银行间和大机构之间交易。1999年正式在境外零售市场交易，2000年在英国推出英国股票差价合约。目前越来越多的投资者使用差价合约CFD作为交易组合的一部分获股票实物交易的一种替代。</p>
+              </details>
+            </li>
+            <li class="item ">
+              <details>
+                <summary ><div class="summary ">Q：CFD交易相比普通股票和期货交易的有什么区别和优势？</div> <i  class="yo-ico ">&#xf031;</i>
+                </summary>
+                <p class="textp ">A：CFD（为差价合约），反映股票或指数的价格变化并提供价格变动所带来的盈利或亏损，而无须实际拥有股票或指数期货。其相对传统股票和期货交易具有很多优势：<br>
+                  双向交易，同时支持做多和做空。CFD让投资者在熊市时同样有获利机会﹐而且也可以利用做空来对冲实股市场的多头风险。<br>
+                  交易成本低。不需要缴纳印花税、交割费用，仅需少量点差。<br>
+                  可以进行分散投资，从而降低风险的小额交易；<br>
+                  交易门槛低。保证金交易，不需要投入全额资金，是普通投资者也可以使用的对冲工具。（
+                  投资品种丰富。可以进行全球金融市场的股票、指数、期货、外汇、利率等交易；</p>
+                </details>
+              </li>
+              <li class="item ">
+                <details>
+                  <summary ><div class="summary ">Q：我在盈交易平台开通的实盘账户及账户里的资金是受保护的吗？</div> <i  class="yo-ico ">&#xf031;</i>
+                  </summary>
+                  <p class="textp ">A：Ayondo是英国金融行为监管局和德国联邦金融监管局的成员。该组织为每位客户提供最多至50万英镑的资金保险。此外，Ayondo客户的最大损失不会超过账户余额，从而得到最高级别的保护。</p>
+                </details>
+              </li>
+              <li class="item ">
+                <details>
+                  <summary ><div class="summary ">Q：我在盈交易进行交易，盈交易怎么保护我的隐私数据？</div> <i  class="yo-ico ">&#xf031;</i>
+                  </summary>
+                  <p class="textp ">A：Ayondo严用最先进的安全防护措施来保管投资者信息。投资者的个人信息全部经过加密并被安全存储。</p>
+                </details>
+              </li>
+              <li class="item ">
+                <details>
+                  <summary ><div class="summary ">Q：账户交易有最低的限额吗？我需要入多少钱才可以开始交易？</div> <i  class="yo-ico ">&#xf031;</i>
+                  </summary>
+                  <p class="textp ">A：进行交易的最低金额为2000元人民币，入金达到或超过该金额即可进行交易。</p>
+                </details>
+              </li>
+              <li class="item ">
+                <details>
+                  <summary ><div class="summary ">Q：盈交易平台的交易成本高吗？分为哪些交易费用？</div> <i  class="yo-ico ">&#xf031;</i>
+                  </summary>
+                  <p class="textp ">A：盈交易平台沿用ayondo在欧洲成熟市场的费用标准，0佣金，仅有少量的点差成本。</p>
+                </details>
+              </li>
+              <li class="item ">
+                <details>
+                  <summary ><div class="summary ">Q：盈交易平台各各交易品种的交易时间？为什么有时候部分投资品种无法交易？</div> <i  class="yo-ico ">&#xf031;</i>
+                  </summary>
+                  <p class="textp ">A：不同市场存在差异，以全球各交易所行情列表开闭市时间为准，部分品种闭市时间无法交易。</p>
+                </details>
+              </li>
+              <ul>
+              </section>
+            </div>
+          </div>
+
+          <div class="opinion" id="opinion" class="yo-flex ">
+
+              <div class="headerdiv" style="width:100%;height:14px;margin:0px;padding:0px;background-color:#1a61dd;"></div>
+              <header class="yo-header m-header" >
+               <!--  <span class="title" ></span> -->
+               <span class="regret  yo-ico"><img style=" width:20px;height:14px" src="./images/back.png"></span>
+             </header>
+             <div class="flex" >
+               <section class="m-list content CFDproduct" >
+                 <div class="features  clearfix">
+                  <div class="features-header  "> </div>
+                  <div class="features-foot  "> </div>
+                  <div class="features-body  ">
+                    <div style="color: #000; margin-top: 13px">   <img src="./images/icon_03.png" width="26" height="26"></div>
+                    <div class="stats">
+                      <p class="headp" style="">CFD产品</p>
+                      <p class="bodyp">CFD，即为差价合约，反映股票或指数的价格变化并提供价格变动所带来的盈利或亏损，而无须实际拥有股票或指数期货，一般采用保证金交易；CFD最初只是大机构的一种有效规避证券风险的工具，目前已成为全球投资者的一种普通投资工具。<br>
+                        CFD的历史差价合约的出现在20世纪70年代，并在2000年成为相对主流的交易品种。CFD是以掉期交易形式出现，80年代主要集中在银行间和大机构之间交易。1999年正式在境外零售市场交易，2000年在英国推出英国股票差价合约。<br>
+                        越来越多的投资者使用差价合约CFD作为交易组合的一部分获股票实物交易的一种替代。使用差价合约CFD进行交易的投资者包括频繁交易的短线交易者和那些寻找能替代融资股票交易的更灵活交易工具的长线投资者。其相对传统股票和期货交易具有很多优势：</p>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="static">
+                    <div class="div4" > <div class="logo"> </div> <div class="time">涨跌双赢</div> </div><br>
+                    <p>双向交易，同时支持做多和做空。CFD让投资者在熊市时同样有获利机会﹐而且也可以利用做空来对冲实股市场的多头风险。</p>
+                    <div class="div4" > <div class="logo"> </div> <div class="time">交易成本低</div> </div><br>
+                    <p>不需要缴纳印花税、交割费用，仅需少量点差。</p>
+                    <div class="div4" > <div class="logo"> </div> <div class="time">利于分散风险</div> </div><br>
+                    <p>可以进行分散投资，从而降低风险的小额交易；</p>
+                    <div class="div4" > <div class="logo"> </div> <div class="time">交易门槛低</div> </div><br>
+                    <p>保证金交易，不需要投入全额资金，是普通投资者也可以使用的对冲工具。（通常是合约总值的10%到 20%）。</p>
+                    <div class="div4" > <div class="logo"> </div> <div class="time">投资品种丰富</div> </div><br>
+                    <p>覆盖面极广，可以进行全球金融市场的股票、指数、期货、外汇、利率等交易；</p>
+                    <div class="div4" > <div class="logo"> </div> <div class="time">利润无限，亏损有限：</div> </div><br>
+                    <p>可以通过杠杆获取大额利润，有最大亏损额限制。</p> </div>
+
+                  </section>
+
+                  <section class="m-list content safety" >
+
+                    <div class="features  clearfix">
+                      <div class="features-header1  "> </div>
+                      <div class="features-foot1  "> </div>
+                      <div class="features-body1  ">
+                        <div style="color: #000; margin-top: 13px">   <img src="./images/icon_03.png" width="26" height="26"></div>
+                        <div class="stats">
+                          <p class="headp" style="">安全保障</p>
+                          <p class="bodyp">Ayondo严用最先进的安全防护措施来保管投资者信息。投资者的个人信息全部经过加密并被安全存储。<br>
+                            Ayondo严格遵守FCA的相关规定，坚守诚信。通过提供市场上最新颖、透明、直观的金融产品执行方式，帮助客户获取投资收益。</p>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="static">
+                        <div class="div4" > <div class="logo"> </div> <div class="time">隐私安全</div> </div><br>
+                        <p>依据金融监管机构的要求，保证用户信息安全性、准确性和实时性。Ayondo用最先进的安全防护措施来保管您的信息。您的个人信息全部经过加密并被安全存储。
+                          <div class="div4" > <div class="logo"> </div> <div class="time">资金安全</div> </div><br>
+                          <p>Ayondo是英国金融行为监管局和德国联邦金融监管局的成员。该组织为每位客户提供最多至50万英镑的资金保险。此外，Ayondo客户的最大损失不会超过账户余额，从而得到最高级别的保护。
+
+                          </div>
+
+                        </section>
+
+                        <section class="m-list content transaction" >
+                          <div class="features  clearfix">
+                            <div class="features-header2  "> </div>
+                            <div class="features-foot2  "> </div>
+                            <div class="features-body2  ">
+                              <div style="color: #000; margin-top: 13px">   <img src="./images/icon_03.png" width="26" height="26"></div>
+                              <div class="stats">
+                                <p class="headp" style="">交易规则</p>
+                                <p class="bodyp">盈交易，是ayondo旗下的全新中文交易APP。依托ayondo在欧洲核心市场的成熟经验，向亚洲市场（特别是中国、新加坡和台湾的华语地区）技术娴熟的客户，提供更快、更透明的执行交易的方式。</p>
+                              </div>
+
+                            </div>
+                          </div>
+                          <div class="static">
+                            <div class="div4" > <div class="logo"> </div> <div class="time">交易种类</div> </div><br>
+                            <p>依据金融监管机构的要求，保证用户信息安全性、准确性和实时性。Ayondo用最先进的安全防护措施来保管您的信息。您的个人信息全部经过加密并被安全存储。</p>
+                            <div class="div4" > <div class="logo"> </div> <div class="time">交易成本</div> </div><br>
+                            <p>0佣金，仅需少量点差</p>
+                            <div class="div4" > <div class="logo"> </div> <div class="time">交易时间</div> </div><br>
+                            <p>不同市场存在差异，以行情列表开闭市时间为准；</p>
+                            <div class="div4" > <div class="logo"> </div> <div class="time">交易杠杆</div> </div><br>
+                            <p>通常只需10%－20%的保证金即可；</p>
+                            <div class="div4" > <div class="logo"> </div> <div class="time">交易最低金额</div> </div><br>
+                            <p>进行交易的最低金额为2000元人民币。</p>
+
+                          </div>
+
+                        </section>
+
+
+                      </div>
+
+                  </div>
+
+  <script type="text/javascript" src="./dist/jquery.min.js"></script>
+  <script type="text/javascript">
+                    function urlParse (e) {
+                      e = e.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                      var t = new RegExp("[\\?&]" + e + "=([^&#]*)"), n = t.exec(location.search);
+                      return null == n ? "" : decodeURIComponent(n[1])
+                    }
+                    $(document).ready(function(){
+
+                      if(navigator.userAgent.match(/iPhone|iPad|iPod/i)){
+
+                      }
+                      else if(navigator.userAgent.match(/Android/i)){
+                        $(".headerdiv").hide();
+                      }
+
+
+                      $("summary").click(function(){
+
+                        $(this).find(".yo-ico").html($(this).parent('details')[0].open ? "&#xf031;" : "&#xf027;");
+
+                      });
+
+
+
+
+                      $(".regret").click(function(){
+                        $(".wenda").show();
+                        $(".opinion").hide();
+                      });
+
+
+
+                      $(".CFDproductck").click(function(){
+                        $(".wenda").hide();
+                        $(".opinion").height(window.innerHeight);
+                        $(".opinion").show();
+
+
+                        $(".CFDproduct").show();
+                        $(".safety").hide();
+                        $(".transaction").hide();
+
+
+                      });
+
+                      $(".safetyck").click(function(){
+                        $(".wenda").hide();
+                        $(".opinion").height(window.innerHeight);
+                        $(".opinion").show();
+
+
+                        $(".CFDproduct").hide();
+                        $(".safety").show();
+                        $(".transaction").hide();
+
+                      });
+
+                      $(".transactionck").click(function(){
+                        $(".wenda").hide();
+                        $(".opinion").height(window.innerHeight);
+                        $(".opinion").show();
+
+
+                        $(".CFDproduct").hide();
+                        $(".safety").hide();
+                        $(".transaction").show();
+
+                      });
+
+
+                    });
+
+
+      </script>
+</body>
+</html>

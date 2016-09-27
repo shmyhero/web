@@ -6,12 +6,31 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
   <meta name="format-detection" content="telephone=no,email=no" />
   <link rel="stylesheet" href="./style/yo-flex.css" />
+  <style >
+  .item >.Grid {display: flex;flex-direction: row;}
+  .Grid >.Grid-cell {flex: 1;}
+  .Grid >.Grid-cell.u-full {flex: 0 0 100%;}
+  .Grid >.Grid-cell.u-1 {flex: 0 0 75%; text-align: left;}
+  .Grid >.Grid-cell.u-1of2 {flex: 0 0 50%;}
+  .Grid >.Grid-cell.u-1of21 { flex: 0 0 40%;}
+  .Grid >.Grid-cell.u-1of3 { flex: 0 0 33.3333%;}
+  .Grid >.Grid-cell.u-1of4 {flex: 0 0 25%;padding-left: .4rem;}
+  .Grid >.Grid-cell.u-1of5 { flex: 0 0 20%;text-align: right;}
+  .Grid >.Grid-cell.u-1of41 { flex: 0 0 30%;}
+  .Grid >.Grid-cell.u-1of51 { flex: 0 0 25%;  margin-left: .15rem;}
+  .yo-btn img{ height: .3rem;
+     margin-bottom: .1rem;
+    margin-right: .05rem;
+    }
+    .yo-tabfoot>.item>div {
+    vertical-align: middle;
+}
+  </style>
 </head>
 <body>
 <div class="spinner active"></div>
   <div id="contcontainer" class="yo-flex contcontainer scroll-in"></div>
-
-  <script type="text/javascript" src="./dist/jquery.min.js"></script>\
+  <script type="text/javascript" src="./dist/jquery.min.js"></script>
   <script type="text/javascript" src="./dist/highstock.js"></script>
   <script type="text/javascript" src="./dist/jquery.signalR.core.js"></script>
   <script src="./dist/hubs.js"></script>
@@ -40,24 +59,9 @@
               },
               colors: ['#5f97f6', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
         });
-        //'21761';//urlParse("securityId");
         $.getJSON('http://cfd-webapi.chinacloudapp.cn/api/security/'+securityId, function (result) {
-           console.log(result);
-           $(".p1").html(result.name+'('+ result.symbol +')');
-           var classname='';
-           if(result.last !== result.preClose)
-           {
-            classname=(result.last - result.preClose) > 0 ? "risePercent" :"fallPercent";
-          }else{
-            classname='stopPercent';
-          }
-          $(".p2").addClass(classname);
-          $(".p2").addClass().html('<span>'+result.last +'</span> <span>'+ ((result.last - result.preClose) / result.preClose * 100).toFixed(2)+ '%</span>');
-
-          draw(securityId,result.preClose);
-
-
-
+           $(".title").html(result.name);
+           draw(securityId,result.open);
         })
   });
 

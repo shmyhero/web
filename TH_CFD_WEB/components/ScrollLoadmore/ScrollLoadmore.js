@@ -213,7 +213,7 @@ var ScrollLoadmore = React.createClass({
         // }
     },
     replacetotickview: function(securityId) {
-        window.location.replace('tickview.html?securityId='+securityId);
+        window.location.replace('tickview.php?securityId='+securityId);
     },
     addStockToOwnNULL: function() {
       $(".Suggest").show();

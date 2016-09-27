@@ -106,7 +106,7 @@
         </section>
         <section class="flex">
             <section class="flexGrid m-list ">
-                <div class="div1left divimg flexGrid-cell u-1of2">
+                <div class="div1left divimg flexGrid-cell u-1of2" id="div1">
                     <img class="blockImage" src="./images/updown.png">
                     <div class="blockTitleText">涨跌双盈</div>
                     <div class="blockTitleContent">市场行情的涨跌动态都是
@@ -156,6 +156,30 @@
 <script type="text/javascript" src="./dist/jquery.min.js"></script>
 <script type="text/javascript" src="./dist/jquery.nivo.slider.js"></script>
 <script type="text/javascript">
+
+// function foo(x) {
+//     var tmp = 3;
+//     function bar(y) {
+//         console.log(x + y + (++tmp));
+//     }
+//     bar(10);
+// }
+// foo(2)
+
+// function foo(x) {
+//     var tmp = 3;
+//     return function (y) {
+//         console.log(x + y + (++tmp));
+//     }
+// }
+// var bar = foo(2); // bar 现在是一个闭包
+// bar(10);
+
+ var info = "hello";  
+    function index(){  
+        console.log(info);  
+    }  
+index()
     var userdata = {
         "userId": 22,
         "token": "0ca8a03d767c4a3395b983abcc7753b6"
@@ -203,8 +227,135 @@
         // }
 
 
-
     })
+
+
+    ; (function ($) {
+        $.Tips = function (option, param) {
+            if (typeof(option) == 'string') {
+                switch(option){
+                    case "setText":
+                        setText(param);
+                        break;
+                    case "setHtml":
+                        setHtml(param);
+                        break;
+                    case "hideTips":
+                        hideTips(param);
+                        break;
+                    case "hideTipsAll":
+                        hideTipsAll();
+                        break;
+                }
+                return;
+            }
+ 
+            function setText(param) {
+                $("#" + param.id + "span").text(param.text);
+            }
+            function setHtml(param) {
+                $("#" + param.id + "span").html(param.html);
+            }
+            function hideTips(param) {
+                $("#" + param.id).remove();
+            }
+ 
+            function hideTipsAll() {
+                $(".tips-MessTips").remove();
+            }
+ 
+            var setting = {
+                id: 'auto',
+                width: 300,
+                height: 20,
+                backgroundColor: "rgb(217, 237, 247)",
+                left: 'auto',
+                top: 20,
+                tipMess: '正在加载中，请稍后',
+                iconImg: '../Content/MyCustom/images/info16.png',
+                time: 3
+            }
+            
+            var documentWidth = $(document).width();
+            var documentHeight = $(document).height();
+            //合并参数
+            option = $.extend(setting, option);
+            
+            if (option.left = 'auto') {
+                var tipWidth = option.width;
+                if (typeof (option.width) == "string") {
+                    tipWidth = documentWidth *parseFloat(option.width)/100;
+                }
+                option.left = (documentWidth - tipWidth) / 2;
+            } else if (typeof (option.left) == "string" && option.left.indexOf("%") > 0) {
+                option.left = option.left * parseFloat(option.left) / 100;
+            }
+            if (typeof (option.top) == "string" && option.top.indexOf("%") > 0) {
+                option.top = option.top * parseFloat(option.top) / 100;
+            }
+            if (typeof (option.width) == "string" && option.width.indexOf("%") > 0) {
+                option.width = documentWidth * parseFloat(option.width) / 100;
+            }
+            if (typeof (option.height) == "string" && option.height.indexOf("%") > 0) {
+                option.height = documentHeight * parseFloat(option.height) / 100;
+            }
+            
+            if (option.id == 'auto') {
+                option.id = 'tips' + $.Random(0, 999999999);
+            }
+ 
+            option.time = option.time * 1000;
+ 
+ 
+            var htmlDiv = '<div class=" tips-MessTips" id="' + option.id
+                        + '" '
+                        + 'style="display:none;overflow:hidden;border-color:#bce8f1;color:#3a87ad;left: ' + option.left
+                        + 'px; top: ' + option.top
+                        + 'px; width: ' + option.width
+                        + 'px; height: ' + option.height
+                        + 'px; position: fixed; background-color:' + option.backgroundColor
+                        + ';"><img src="' + option.iconImg
+                        + '" /><span id="' + option.id
+                        + 'span">' + option.tipMess
+                        + '</span></div>'
+ 
+            //如果已经存在的DIV
+            if ($("#" + option.id).length > 0) {
+                $("#" + option.id + "span").html(option.tipMess);
+                return;
+            }
+ 
+            //如果还没有一个tip
+            if ($(".tips-MessTips").length == 0) {
+                $("body").append(htmlDiv);
+            } else {
+                $(".tips-MessTips").each(function () {
+                    $(this).offset(function (n, c) {
+                        newPos = new Object();
+                        newPos.left = $(this).offset().left;
+                        newPos.top = $(this).offset().top + option.height;
+                        return newPos;
+                    })
+                });
+ 
+                $(".tips-MessTips").first().before(htmlDiv);
+            }
+            if (option.time > 0) {
+                setTimeout(
+                    function () {
+                        $("#" + option.id).remove();
+                    }, option.time);
+            }
+ 
+            //显示当前的窗口
+            return $("#" + option.id).show();
+        };
+ 
+    })(jQuery);
+
+    $(function() {
+$("#div1").Tips("setLoadingText","系统错误，请与管理员联系");
+});
 </script>
 
 </html>

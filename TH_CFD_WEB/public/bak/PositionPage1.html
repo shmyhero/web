@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./style/yo-flex.css" />
+</head>
+<body>
+  <section class="m-layer">
+            <ul class="yo-Htab">
+                <li class="item item-on" id="li0">持仓 <span class="bot1"></span><span class="top2"></span></li>
+                <li class="item " id="li1">平仓 <span class="bot1"></span><span class="top2"></span></li>
+                <li class="item " id="li2">统计 </li>
+           </ul>
+    </section>
+<section class="m-list">
+    <div class="slideThree">  
+      <input type="checkbox" value="None" id="slideThree" name="check"  />
+      <label for="slideThree"></label>
+    </div>
+            <ul class="yo-list">
+               
+            <li class="item5 Grid"> 
+                <div class="last1 Grid-cell u-1of3 " id="tab0" >
+                    <div class="name">行情</div>
+                   <img class="symbol" src ="./images/dark_up.png" />
+                </div>
+                <div class="last1 Grid-cell u-1of3  centerText " id="tab1"  >
+                    <div class="name extendTextTop aligncenter">止盈/止损</div>
+                    <img class="symbol" src ="./images/dark_up.png" />
+                   
+                </div>
+                <div class="last1 Grid-cell u-1of3 " id="tab2"  >
+                    <div class="name extendTextTop aligncenter">&nbsp;</div>
+                     <div class=" extendTextBottom alignright">&nbsp;</div>
+                </div> 
+            </li>
+           
+            <section class="tick-list ">
+                    <ul class="yo-ticktab1 ">
+                        <li class="item item-on" id="li0">时分</li>
+                        <li class="item " id="li1">5日</li>
+                        <li class="item " id="li2">1月</li>
+                   </ul>
+            </section> 
+            
+            <div class="yo-group yo-list contcontainer1 ">
+                    <div id="container0" class="char container " ></div>
+                    <div id="container1" class="char " ></div>
+                    <div id="container2" class="char " ></div>
+            </div>    
+           
+            </ul>
+        </section>
+
+
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script type="text/javascript" src="./dist/highstock.js"></script>
+<script type="text/javascript" src="./dist/keyboard.js"></script>
+
+</body>
+</html>

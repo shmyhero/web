@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./style/yo-flex.css" />
+    <style type="text/css">
+        #tab-content{ height: 85%; background-color: #fff; }
+        .div {
+            width: 400px;height: 20px;
+              background: linear-gradient(0deg, transparent, transparent 45%, red, transparent 55%, transparent 100%);
+              background-size: 20px 20px;
+              background-repeat: no-repeat;  
+            }
+
+            .background{
+                background-image: url('./images/bangdan1.jpg');
+                filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+                -moz-background-size:100% 100%;
+                    background-size:100% 100%;
+            }
+
+            .background1{
+                background-image: url('./images/bangdan2.jpg');
+                filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+                -moz-background-size:100% 100%;
+                    background-size:100% 100%;
+            }
+</style>
+
+</head>
+<body>
+   <div class="yo-flex">
+    <section class="m-layer">
+            <ul class="yo-tab yo-tab-test">
+                <li class="item  item-out" id="item1">热度榜</li>
+                <li class="item  item-on" id="item2">牛人榜</li>
+            </ul>
+        </section>
+    <div class="flex background" id="tab-content">
+
+     </div>
+    <section class="yo-tab yo-tab-view m-tabview">
+        <a href="index.php" class="item item-y-ico ">
+            <i class="yo-ico">&#xf04f;</i>
+            首页
+        </a>
+        <a href="StockPage.html" class="item item-y-ico ">
+            <i class="yo-ico">&#xf04e;</i>
+            行情
+        </a>
+        <a href="PositionPage.html" class="item item-y-ico">
+            <i class="yo-ico">&#xf050;</i>
+            交易
+        </a>
+        <a href="bangdan.html" class="item item-y-ico item-on">
+            <i class="yo-ico">&#xf051;</i>
+            榜单
+        </a>
+        <a href="mywenda.html" class="item item-y-ico">
+           <i class="yo-ico yypf-ico">&#xE80D;</i>
+            问答
+        </a>
+    </section>
+</div>
+<script type="text/javascript" src="./dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+    $(".yo-tab-test li").click(function(){
+
+
+        if($(this).index()==0){
+
+            $("#item1").removeClass('item-out');
+            $("#item1").addClass('item-on');
+
+            $("#item2").addClass('item-out');
+            $("#item2").removeClass('item-on');
+
+            $("#tab-content").removeClass('background');
+            $("#tab-content").addClass('background1');
+       }else{
+
+           $("#item1").removeClass('item-on');
+            $("#item1").addClass('item-out');
+
+           $("#item2").removeClass('item-out');
+           $("#item2").addClass('item-on');
+           $("#tab-content").removeClass('background1');
+           $("#tab-content").addClass('background');
+       }
+
+    });
+
+
+     //置顶
+     var $top = $(".top");
+     $top.click(function(){
+      var $tr = $(this).parents("li");
+      $tr.fadeOut().fadeIn();
+      $("#handle-1").prepend($tr);
+     });
+});
+</script>
+</body>
+</html>

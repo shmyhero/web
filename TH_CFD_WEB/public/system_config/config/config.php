@@ -4,36 +4,36 @@ define('ISBASE', 9);
 switch (ISBASE) {
 	case 0:
 		//上海迈和
-		define('BASE_URL',  'http://myherochina.com/caizdTG/');
+		define('BASE_URL',  'http://myherochina.com/TH_CFD_WEB/');
 		define('appid', 'wxf12393f33e05b9a3');
 		define('secret', '0072c4a9765506236168e330a20207c9');
 	case 1:
 		//迈和信息科技 //被封域名
-		define('BASE_URL',  'http://amazingsh.com/caizdTG/');
+		define('BASE_URL',  'http://amazingsh.com/TH_CFD_WEB/');
 		define('appid', 'wx5ab9ebf8fa013fa7');
 		define('secret', 'a10d9b29cd1651ac272ff8652d9701fc');
 		break;
 	case 2:
 		//上海迈和信息科技有限公司
-		define('BASE_URL',  'http://fajiangpin.com/caizdTG/');
+		define('BASE_URL',  'http://fajiangpin.com/TH_CFD_WEB/');
 		define('appid', 'wx6e976ef797645ec6');
 		define('secret', '01d710c6d5c737bdc09e7d2594e3fbfa');
 		break;
 	case 3:
 		//迈和信息
-		define('BASE_URL',  'http://myherosh.com/caizdTG/');
+		define('BASE_URL',  'http://myherosh.com/TH_CFD_WEB/');
 		define('appid', 'wx0de638cecd3d1af0');
 		define('secret', 'e08d24b42f6295b0b82a2e5f38d1b9ad');
 		break;
 	case 4:
 		//迈和科技 404
-		define('BASE_URL',  'http://tradingsh.com/caizdTG/');
+		define('BASE_URL',  'http://tradingsh.com/TH_CFD_WEB/');
 		define('appid', 'wxb9271ad84fa589ca');
 		define('secret', '11b4c4e809f7cb2c51142e0afa2d49d5');
 		break;
 	case 5:
 		//模拟炒股
-		define('BASE_URL',  'http://buyingspan.com/caizdTG/');
+		define('BASE_URL',  'http://buyingspan.com/TH_CFD_WEB/');
 		define('appid', 'wx74f2832d5a074a82');
 		define('secret', '198481a9623696423327d5f1cc31b531');
 		break;
@@ -45,13 +45,13 @@ switch (ISBASE) {
 		break;
 	case 7:
 		//tradehero
-		define('BASE_URL',  'http://cashkindom.com/caizdTG/');
+		define('BASE_URL',  'http://cashkindom.com/TH_CFD_WEB/');
 		define('appid', 'wx2abb9cdb99453eb6');
 		define('secret', 'e3cb79d413edbded54470363c27c480e');
 		break;
 	case 8:
 		//TradeHero
-		define('BASE_URL',  'http://gateofmarket.com/caizdTG/');
+		define('BASE_URL',  'http://gateofmarket.com/TH_CFD_WEB/');
 		define('appid', 'wx2e893e78830ceb6a');
 		define('secret', 'e468854bf311d9a8a8b0f461872c9e91');
 		break;

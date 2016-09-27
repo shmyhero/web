@@ -401,10 +401,10 @@ line-height: .2rem;}
 .yo-btn-e1 {padding: 0 4.5em;color: #fff; border: 0 none; height: 0.4rem;  line-height: 0.4rem;  font-size: 0.15rem;  background-color: #f1585c;}
 
 
-.yo-btn-c { cursor:pointer; padding: 0.05rem 3.5em; border-color: #133e86;   border-width: 1px;   color: #fff;    height: 0.4rem;  line-height: 0.4rem;  font-size: 0.15rem;  background-color: #356dce;}
+.yo-btn-c { cursor:pointer; padding: 0.02rem 1em; border-color: #133e86;   border-width: 1px;   color: #fff;    height: 0.4rem;  line-height: 0.4rem;  font-size: 0.19rem;  background-color: #356dce;}
 .yo-btn-chover{ background-color: #6da2fc; }
 
-.yo-btn-d {padding: 0.05rem 3.5em; border-color: #133e86;   border-width: 1px;   color: #fff; height: 0.4rem;  line-height: 0.4rem;  font-size: 0.15rem;  background-color: #356dce;}
+.yo-btn-d {cursor:pointer; padding: 0.02rem 1em; border-color: #133e86;   border-width: 1px;   color: #fff;    height: 0.4rem;  line-height: 0.4rem;  font-size: 0.19rem;  background-color: #356dce;}
 .yo-btn-dhover{ background-color: #6da2fc;}
 
 .yo-btn-f {padding: 0 4em; border-color: #153a77;   border-width: 1px;   color: #fff;    height: 0.4rem;  line-height: 0.4rem;  font-size: 0.15rem;  background-color: #f46b6f;}

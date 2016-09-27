@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>行情</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
@@ -9,14 +10,11 @@
     <style type="text/css">
         #tab-content{  background-color: #fff; }
         #Suggest{  z-index: 1000; }
-
-
         .drag-handle {
         margin-right: 10px;
         font: bold 20px Sans-Serif;
         }
     </style>
-
 </head>
 <body>
       <div class="spinner active"></div>
@@ -38,7 +36,7 @@
                 <li class="item item-y-ico " id="li1">美股 <i class="yo-ico bot"> <img src="./images/triangle.png" ></i> </li>
                 <li class="item item-y-ico " id="li2">指数 <i class="yo-ico bot"> <img src="./images/triangle.png" ></i> </li>
                 <li class="item item-y-ico " id="li3">外汇 <i class="yo-ico bot"> <img src="./images/triangle.png" ></i> </li>
-                <li class="item item-y-ico " id="li4">现货 <i class="yo-ico bot"> <img src="./images/triangle.png" ></i> </li>
+                <li class="item item-y-ico " id="li4">商品 <i class="yo-ico bot"> <img src="./images/triangle.png" ></i> </li>
            </ul>
     </section>
     <div class="flex" id="tab-content">
@@ -67,9 +65,17 @@
 <script type="text/javascript" src="./dist/jquery.min.js"></script>
 <script type="text/javascript" src="./dist/jquery.signalR.core.js"></script>
 <script src="./dist/hubs.js"></script>
+<!-- <script type="text/javascript" src="./dist/iscroll.js"></script> -->
 <script type="text/javascript" src="./dist/SliderTab.js"></script>
+<script src="http://sdk.talkingdata.com/app/h5/v1?appid=23BDFF1EABC6BE3262059895744F28C6&vn=YJYWEB&vc=0.1"></script>
 <script type="text/javascript">
+// var myScroll;
+
+// function loaded () {
+//   myScroll = new IScroll('.yo-list', { preventDefault:false });
+// }
 $(document).ready(function(){
+    TDAPP.onEvent("WebAPP","行情页面");
     $(".bookmark").hide();
     $(".Suggest").hide();
     $(".yo-header .affirm").click(function(){
@@ -80,7 +86,7 @@ $(document).ready(function(){
 
     $(".yo-header .bianji").click(function(){
         $(".bookmark").show();
-         $(".content").hide();
+        $(".content").hide();
     });
 
      //置顶

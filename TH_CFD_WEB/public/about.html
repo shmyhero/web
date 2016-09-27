@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<title>关于我们</title>
+<link rel="stylesheet" href="./style/yo-flex1.css" />
+<script type="text/javascript" src="./dist/iscroll.js"></script>
+<script type="text/javascript">
+var myScroll;
+
+function loaded () {
+  myScroll = new IScroll('#wrapper', { preventDefault:false });
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+</script>
+
+<style type="text/css">
+
+  *, ::before, ::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+html {
+    /*background-color: #f8f8f8;*/
+   /* color: #212121;*/
+    font-size: 100px;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body,ul,li {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+body {
+  font-size: 12px;
+  font-family: 'Open Sans', Arial, 'Microsoft YaHei', 微软雅黑, SimHei, 中易黑体, sans-serif;
+  overflow: hidden; /* this is important to prevent the whole page to bounce */
+}
+  div {
+    display: block;
+  }
+ table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    text-align: left;
+  }
+  ul, ol, dl, dd, h1, h2, h3, h4, h5, h6, figure, form, fieldset, legend, input, textarea, button, p, blockquote, th, td, pre, xmp {
+    margin: 0;
+    padding: 0;
+  }
+
+/*.yo-flex>.flex, .yo-flex .flex-inherit>.flex {
+    overflow: auto;
+    height: 100%;
+}
+.yo-flex>.flex, .yo-flex .flex-inherit, .yo-flex .flex-inherit>.flex {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    position: relative;
+}*/
+
+#wrapper {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f8f8f8;
+  overflow: hidden;
+}
+
+/*#scroller {
+  position: absolute;
+  z-index: 1;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  width: 100%;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none;
+}*/
+
+/*#wrapper {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  -ms-touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+#scroller {
+  position: absolute;
+
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}*/
+
+
+
+.static-header {
+    min-height: 470px;
+    background-color: #1962dd;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    position: relative;
+}
+.clearfix:before, .clearfix:after {
+    display: table;
+    content: " ";
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.col-sm-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.text-heading {
+    position: relative;
+    width: 100%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding-top: 158px;
+    z-index: 20;
+}
+p {
+    margin: 0 0 10px;
+}
+.static-header .text-heading p {
+    color: #fff;
+    font-weight: normal;
+}
+
+.text-heading .p0 {
+    font-size: 43px;
+    text-shadow: -1px 0 #0066ce, 0 1px #0066ce, 1px 0 #0066ce, 0 -1px #0066ce;
+}
+
+.text-heading .p1 {
+    padding: 29px 0 19px;
+    font-size: 43px;
+    line-height: 65px;
+    text-shadow: -1px 0 #0066ce, 0 1px #0066ce, 1px 0 #0066ce, 0 -1px #0066ce;
+}
+
+.stats {
+    padding: 1px 0 0 0;
+}
+
+.stats .p2 {
+    padding: 0px 0;
+    font-size: 17px;
+}
+
+.text-heading p {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.features {
+    background-color: #f8f8f8;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    position: relative;
+}
+
+.features-header{
+  min-height: 190px;
+    background-color: #1962dd;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    position: relative;
+}
+
+.features-foot{
+    min-height: 200px;
+    background-color: #f8f8f8;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    position: relative;
+}
+
+.features-body{
+    position: absolute;
+    z-index: 2;
+    bottom: 1px;
+    left: 0;
+    height: 345px;
+    width: 92%;
+    background-color: #fff;
+    font-size: 12px;
+    text-align: center;
+    margin: 0 15px;
+    border-radius: 3px;
+    -moz-box-shadow:1px 1px 1px #f8f8f8; 
+    -webkit-box-shadow:1px 1px 1px #f8f8f8; 
+    box-shadow:1px 1px 1px #f8f8f8;
+}
+
+.headp {
+    font-size: 19px;
+    padding-top: 19px; color:#1962dd; 
+}
+
+
+.bodyp {
+    font-size: 15px;
+    color: #666666;
+    margin: 19px 15px 0 ;
+    line-height: 24px;
+    text-align: left;
+}
+
+
+#features-list1{
+  min-height: 550px;
+    background-color: #f8f8f8;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    position: relative;
+}
+
+.section {
+    padding: 15px 0 0;
+    min-height: 50px;
+    position: relative;
+    text-align: center;
+}
+
+.dark {
+    color: #000;
+    background: #f8f8f8;
+}
+
+#features-list1 .list-optimization {
+    padding: 0;
+}
+
+.list-optimization {
+    list-style-type: none;
+    text-align: center;
+    position: relative;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#features-list1 h4 {
+    font-size: 17px;
+    color: #404040;
+    margin-top: 9px;
+    margin-bottom: 0px;
+    font-weight: 300;
+    display: block;
+}
+
+#features-list1 h6 {
+    font-size: 10px;
+    color: #525252;
+    margin-top: 15px;
+    margin-bottom: 24px;
+    font-weight: 300;
+}
+
+.list-optimization li {
+  width: 49%;
+    /*width: calc(50% - 4px);
+    width: -webkit-calc(50% - 4px);*/
+    display: inline-block;
+    text-align: left;
+    font-size: 16px;
+    position: relative;
+}
+
+#features-list1 article {
+    text-align: center;
+    margin: 0px 0px;
+    background: url(./images/features-list1.png) no-repeat;
+    background-size: contain;
+    min-height: 220px;
+}
+
+.cols:after, .step:after, .shell:after, .paging:after, .shell-inner:after, .list-optimization:after, .list-optimization li:after, .carbon_customrecentposts li:after, .section-reports .section-head:after {
+    clear: both;
+    display: block;
+    content: '';
+    font-size: 0;
+    line-height: 0;
+    text-indent: -4000px;
+}
+
+#features-list1 .thin1 {
+    font-size: 12px;
+    padding-top: 19%;
+    line-height: 27px;
+    color: #fff;
+}
+
+#features-list1 .thin2 {
+    font-size: 10px;
+    padding-top: 20%;
+    line-height: 20px;
+    color: #6d6d6d;
+    text-align: left;
+    letter-spacing: 0px;
+    margin: 0px 12px 0 10px;
+}
+
+#features-list1 > .list-optimization li {
+    padding: 5px 5px 5px;
+    vertical-align: top;
+}
+
+.awards{
+
+    background-color: #1962dd;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    padding-bottom: 35px;
+}
+
+article b{ font-size:10px; color:#000;}
+.numhread{ padding-top: 35px; }
+.num{ background-color: #fff;text-align:center;  margin: 0 auto 10px ; font-size:15px; color: #1962dd; border-radius: 50%; width: 32px; height: 32px; line-height: 32px; } 
+
+.awardstitle { font-size:17px; color: #fff; line-height: 23px; margin: 0 0 10px ; }
+.awardstext { font-size:14px; color: #aed8fd; line-height: 23px; margin: auto 15px; text-align: left; }
+</style>
+</head>
+<body onload="loaded()">
+ <div id="wrapper" class="yo-flex">
+ <div id="scroller" class="flex " >
+
+    <div  class="static-header  clearfix">
+        <div class="container">
+            <div class="col-sm-12 ">
+                <div class="text-heading">
+                    <p class="  p0" >盈交易</p>
+                    <p class="  p1">ayondo亚洲中文交易平台</p>
+
+                    <div class="stats">
+                        <p class="p2">行业领先的社交投资集团之一</p>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="features  clearfix"> 
+        <div class="features-header  "> </div>
+        <div class="features-foot  "> </div>
+        <div class="features-body  "> 
+          <div style="color: #000; margin-top: 43px">   <img src="./images/icon_03.png" width="26" height="26"></div>
+          <div class="stats">
+                        <p class="headp" style="">风靡全球的社交投资平台</p>
+                       <p class="bodyp">Ayondo是欧洲最大的社交投资平台之一，总部位于瑞士，Ayondo Markets Limited位于英国伦敦，为普通和专业交易商提供交易执行服务，受英国金融市场行为监管局(FCA)授权和监管。Ayondo的使命是为个人投资者提供交易和和投资的革新技术，CFD（差价合约）是Ayondo提供的核心交易品种。盈交易是Ayondo旗下中文交易平台。</p>
+                    </div>
+
+        </div>
+    </div>
+
+
+    <section id="features-list1" class="section dark">
+     <h4>ayondo资质</h4><h6>专业资质 权威认证 为您的资金保驾护航</h6>
+        <ul class="container animated hiding list-optimization" data-animation="fadeInDown" style="opacity: 1;">
+       
+            <li>
+              <article>
+                     <p class="thin1">最高级认证</p>
+                     <p class="thin2">ayondo具有全套的FCA牌照（编号：184333）,受到<b>英国金融监管局的一级监管。</b>  </p>
+              </article>
+                
+            </li>
+            <li>
+              <article>
+                     <p class="thin1">准上市公司</p>
+                     <p class="thin2">ayondo即将登陆新加坡交易所（SGX),完成后将成为在<b>新加坡上市的,第一家金融科技公司。</b> </p>
+              </article>
+            </li>
+            <li>
+              <article>
+                     <p class="thin1">领先社投平台</p>
+                     <p class="thin2">ayondo在2015年和2016年,均被ADVFN国际金融奖授予<b>“最佳社交交易平台”。</b>  </p>
+              </article>
+            </li>
+            <li>
+                <article>
+                     <p class="thin1">市场核心力量</p>
+                     <p class="thin2">Ayondo的使命是为个人投资者提供交易和和投资的革新技术，<b>并进行良好的风险控制。</b>  </p>
+                </article>
+            </li>
+        </ul>
+    </section>
+
+
+    <div class="awards "> 
+     <div class="numhread ">
+      <div class="num ">01</div>
+      </div>
+      <div  class="awardstitle" >SGX第一家上市公司</div>
+         <div class="awardstext" >Ayondo成为最新一家搭上IPO风潮的业内公司，计划在新加坡交易所上市并成为首个金融技术业内上市企业。Ayond CEO，Robert Lempka表示: “我们对计划在新加坡上市感到非常激动，因为这将会是我们提升公司全球品牌知名度的绝佳平台，尤其是在亚洲。”</div>
+
+
+        <div class="numhread ">
+          <div class="num ">02</div>
+          </div>
+          <div  class="awardstitle">Ayondo在亚洲的业务</div>
+             <div class="awardstext">Ayondo与台资券商KGI Fraser Securities Pte Ltd（凯基弗雷泽证券公司）合作推出KGI Contrax 产品。这一产品使用Ayondo的平台Tradehub。这一平台宣布遵守白标协议，允许投资者自由买卖差价合约（CFD）。</div>
+
+
+        <div class="numhread ">
+        <div class="num ">03</div>
+        </div>
+        <div  class="awardstitle">在新加坡设立办事处</div>
+           <div class="awardstext">Ayondo日益重视亚洲地区的业务发展，在新加坡设立办事处，用以扩大其在该地区的业务并寻找新的伙伴关系，并推动在SGX（新加坡证券交易所）的上市工作。</div>
+
+        <div class="numhread ">
+          <div class="num ">04</div>
+          </div>
+          <div  class="awardstitle">在中国大陆开展业务</div>
+             <div class="awardstext">作为ayondo全球战略的重要组成部分，蓬勃发展的中国金融市场提供来无限的想象空间，ayondo已经在香港地区设置了全资子公司，来负责中国区业务的开展，并推出全中文版的app盈交易。</div>
+
+
+    </div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>

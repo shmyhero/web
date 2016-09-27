@@ -217,14 +217,14 @@ var SliderList = React.createClass({
         onTouchMove : function(e){
 
             //阻止默认动作 大坑
-            // e.cancelBubble = true;
-            // e.returnValue = false;
-            // if (e.stopPropagation) {
-            //     e.stopPropagation();
-            // }
-            // if (e.preventDefault) {
-            //     e.preventDefault();
-            // }
+        // e.cancelBubble = true;
+        // e.returnValue = false;
+        // if (e.stopPropagation) {
+        //     e.stopPropagation();
+        // }
+        // if (e.preventDefault) {
+        //     e.preventDefault();
+        // }
 
             if(!this.state.isTouchdown){
                 return;

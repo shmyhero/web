@@ -123,50 +123,45 @@ var SearchBox = React.createClass({
     },
     //获取历史搜索
     getHistorySuggest : function(){
-         var o = this;
+        var o = this;
         var HistoryStock =this.getParam("HistoryStock");
-        if (HistoryStock != null ) {
         var HistorysuggestData = JSON.parse(HistoryStock.substr(1, HistoryStock.length));
-
         console.log(HistorysuggestData);
+        if (HistorysuggestData.length > 1 ) {
 
+          var rightPartContent = ( <div className=" Grid-cell u-1of5">已添加</div>);
+          var arrStocks = localStorage.getItem('StockToOwn');
+          this.state.getHistorySuggestElement = HistorysuggestData.map(function(key, index) {
+            if(index==0){
 
-            var rightPartContent = ( <div className=" Grid-cell u-1of5">已添加</div>);
-             var arrStocks = localStorage.getItem('StockToOwn');
-
-            this.state.getHistorySuggestElement = HistorysuggestData.map(function(key, index) {
-
-                if(index==0)
-                        {
-                return (  <li className="label Grid" key={index} >
-                                <div className=" Grid-cell u-1of1">
-                                    <p >以下为历史查询记录 </p>
-                                </div>
-                            </li> )
-                        }else{
-
-                 if(arrStocks.indexOf(key.id)==-1){
-                           rightPartContent=( <div className="Grid-cell u-1of5"> <i className="yo-ico" onClick={o.addToMyListPressed.bind(this,key.id,index)} > &#xf04f;</i> </div>)
-                        }else{
-                          rightPartContent = ( <div className=" Grid-cell u-1of5">已添加</div>);
-                        }
-                return (
-                     <li className="item Grid" key={index}>
-                        <div className="last Grid-cell u-1of1" onClick={o.replacetotickview.bind(this,key.id)}>
-                            <p className="name">{key.name} </p>
-                            <p className="symbol">{key.symbol}</p>
-                        </div>
-                        {rightPartContent}
-                    </li>
-                    )
-                }
-            },this);
-        }else{
+                  return (  <li className="label Grid" key={index} >
+                                  <div className=" Grid-cell u-1of1">
+                                      <p >以下为历史查询记录 </p>
+                                  </div>
+                              </li> )
+            }else{
+                if(arrStocks.indexOf(key.id)==-1){
+                             rightPartContent=( <div className="Grid-cell u-1of5"> <i className="yo-ico" onClick={o.addToMyListPressed.bind(this,key.id,index)} > &#xf04f;</i> </div>)
+                          }else{
+                            rightPartContent = ( <div className=" Grid-cell u-1of5">已添加</div>);
+                          }
+                  return (
+                       <li className="item Grid" key={index}>
+                          <div className="last Grid-cell u-1of1" onClick={o.replacetotickview.bind(this,key.id)}>
+                              <p className="name">{key.name} </p>
+                              <p className="symbol">{key.symbol}</p>
+                          </div>
+                          {rightPartContent}
+                      </li>
+                      )
+                  }
+        },this);
+      }else{
             this.state.getHistorySuggestElement = null;
-        }
-        this.setState({
+      }
+      this.setState({
             searchStockRawInfo: HistorysuggestData
-        })
+      })
     },
     //获取相关搜索
     getSuggest : function(){
@@ -286,7 +281,7 @@ var SearchBox = React.createClass({
     },
     replacetotickview: function(securityId) {
         //LogicData.addStockToOwn(this.state.stockInfo[rowID]);
-        window.location.replace('tickview.html?securityId='+securityId);
+        window.location.replace('tickview.php?securityId='+securityId);
     },
     render : function(){
         var suggestElement;
@@ -311,7 +306,7 @@ var SearchBox = React.createClass({
                 <section>
                         <ul className="yo-tabclear">
                             <li className="item " >
-                            <input type="button" value="清除历史记录" onClick={this.clearHistory} className="yo-btn yo-btn-e" />
+                          <input type="button" value="清除历史记录" onClick={this.clearHistory} className="yo-btn yo-btn-e" />
                             </li>
                        </ul>
                 </section>

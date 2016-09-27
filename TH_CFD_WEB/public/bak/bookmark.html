@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./style/yo-flex.css" />
+    <link rel="stylesheet" href="./style/common-hash.css" />
+    <link rel="stylesheet" href="accountcenter.console.css" />
+    <style type="text/css">
+        .drag-handle {
+            margin-right: 10px;
+            font: bold 20px Sans-Serif;
+        }
+        /*.contcontainer1{  background:-webkit-gradient(linear, 0 0, 0 100%, from(#1c5fd1), to(#123b80));}*/
+        /* .slideThree */
+
+        .slideThree {
+            width: 38px;
+            height: 24px;
+            background: #fff;
+            margin: 20px auto;
+            position: relative;
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px;
+            -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+            -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+        }
+
+        .slideThree:after {
+            content: ' ';
+            position: absolute;
+            right: 10px;
+            z-index: 0;
+            font: 12px/26px Arial, sans-serif;
+            font-weight: bold;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15);
+        }
+
+        .slideThree:before {
+            content: ' ';
+            position: absolute;
+            left: 10px;
+            z-index: 0;
+            font: 12px/26px Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .slideThree label {
+            display: block;
+            width: 23px;
+            height: 22px;
+            cursor: pointer;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            z-index: 1;
+            background: #fff;
+            /*  background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  background: linear-gradient(to bottom, #fff 0%, #fff 40%, #fff 100%);*/
+            -moz-border-radius: 50px;
+            -webkit-border-radius: 50px;
+            border-radius: 50px;
+            -moz-transition: all 0.4s ease;
+            -o-transition: all 0.4s ease;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+            -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .slideThree input[type=checkbox] {
+            visibility: hidden;
+        }
+
+        .slideThree input[type=checkbox]:checked + label {
+            left: 14px;
+        }
+        /* end .slideThree */
+    </style>
+</head>
+
+<body>
+    <div class="yo-flex">
+        <div class=" yo-suggest-modal ">
+            <div class="cont">
+                <header class="yo-header m-header">
+                    <h2 class="title">我的自选</h2>
+                    <span class="regret">完成</span>
+                </header>
+                <section class="m-list">
+
+                    <!-- <div class="spec-axis ng-scope" style="margin-top:35px" >
+    <div class="spec-axis-done-masker"></div>
+      <div class="spec-axis-done bounceInLeft" id="J-spec-axis-done" style="width: 84%;">
+        <div class="icon-spec-mid-status" >
+          <div class="status-text color-999"><span class="text-warning ng-binding">+77084</span></div>
+        </div>
+      </div>
+    <div class="icon L0 icon-spec-point-done" >L0</div>
+    <div class="icon L1 icon-spec-point-done" >L1</div>
+    <div class="icon L2 icon-spec-point-done" >L2</div>
+    <div class="icon L3 icon-spec-point-done icon-spec-point-current" >L3</div>
+    <div class="icon L4 icon-spec-point-undone" >L4</div>
+  </div>
+ -->
+                    <!-- <div id="J_progress" class="m-progress z-step3-done z-step1">
+                        <div class="m-progress-list">
+                            <span class="step-1 step">
+                                <em class="u-progress-stage-bg"></em>
+                                <i class="u-stage-icon-inner">1<em class="bg"></em></i>
+                                <p class="stage-name">验证</p>
+                            </span>
+                            <span class="step-2 step">
+                                <em class="u-progress-stage-bg"></em>
+                                <i class="u-stage-icon-inner">2<em class="bg"></em></i>
+                                <p class="stage-name">设置</p>
+                            </span>
+                            <span class="step-3 step">
+                                <em class="u-progress-stage-bg"></em>
+                                <i class="u-stage-icon-inner">3<em class="bg"></em></i>
+                                <p class="stage-name">完成</p>
+                            </span>
+                            <span class="u-progress-placeholder"></span>
+                        </div>
+                        <div class="u-progress-bar total-steps-3">
+                            <div class="u-progress-bar-inner"></div>
+                        </div>
+                    </div>
+-->
+                    <ul class="yo-list">
+                        <li class="listheader  Grid ">
+                            <div class="Grid-cell u-1of2 ">全部产品</div>
+                            <div class="Grid-cell u-1of3 ">置顶</div>
+                            <div class="Grid-cell u-1of5 ">拖动</div>
+                        </li>
+                    </ul>
+                    <div class="slideThree">
+                        <input type="checkbox" value="None" id="slideThree" name="check" />
+                        <label for="slideThree"></label>
+                    </div>
+                </section>
+                <div class="flex">
+                    <section class="m-list">
+                        <ul class="yo-list" id="handle-1">
+                            <li class="item1 Grid">
+                                <div class="last1 Grid-cell u-1of3">
+                                    <div class="name">类型</div>
+                                    <img class="symbol" src="./images/dark_up.png" />
+                                </div>
+                                <div class="last1 Grid-cell u-1of3">
+                                    <div class="name aligncenter">本金</div>
+                                    <div class="symbol aligncenter">1111111</div>
+                                </div>
+                                <div class="last1 Grid-cell u-1of3">
+                                    <div class="name alignright">杠杆</div>
+                                    <div class="symbol alignright">5</div>
+                                </div>
+                            </li>
+                            <li class="item1 Grid">
+                                <div class="last1 Grid-cell u-1of3">
+                                    <div class="name">开仓价格</div>
+                                    <div class="symbol extendTextBottom">111</div>
+                                </div>
+                                <div class="last1 Grid-cell u-1of3">
+                                    <div class="name extendTextTop aligncenter">当前价格</div>
+                                    <div class="symbol extendTextBottom aligncenter">222</div>
+                                </div>
+                                <div class="last1 Grid-cell u-1of3">
+                                    <div class="name extendTextTop alignright">价差</div>
+                                    <div class="symbol extendTextBottom alignright">111</div>
+                                </div>
+                            </li>
+                            <li class="item5 Grid">
+                                <div class="last1 Grid-cell u-1of3 " id="tab0">
+                                    <div class="name">行情</div>
+                                    <img class="symbol" src="./images/dark_up.png" />
+                                </div>
+                                <div class="last1 Grid-cell u-1of3  centerText " id="tab1">
+                                    <div class="name extendTextTop aligncenter">止盈/止损</div>
+                                    <img class="symbol" src="./images/dark_up.png" />
+
+                                </div>
+                                <div class="last1 Grid-cell u-1of3 " id="tab2">
+                                    <div class="name extendTextTop aligncenter">&nbsp;</div>
+                                    <div class=" extendTextBottom alignright">&nbsp;</div>
+                                </div>
+                            </li>
+
+                            <section class="tick-list ">
+                                <ul class="yo-ticktab1 ">
+                                    <li class="item item-on" id="li0">时分</li>
+                                    <li class="item " id="li1">5日</li>
+                                    <li class="item " id="li2">1月</li>
+                                </ul>
+                            </section>
+
+                            <div class="yo-group yo-list contcontainer1 ">
+                                <div id="container0" class="char container "></div>
+                                <div id="container1" class="char "></div>
+                                <div id="container2" class="char "></div>
+                            </div>
+
+                        </ul>
+                    </section>
+                </div>
+                <!-- <section class="m-footlayer">
+            <ul class="yo-tabfoot">
+                <li class="item " ><input type="button" value="全部" class="yo-btn yo-btn-s" id="selectAll"></li>
+                <li class="item " ><input type="button" value="删除" class="yo-btn yo-btn-e " id="getValue"></li>
+           </ul>
+    </section> -->
+            </div>
+
+            <script type="text/javascript" src="./dist/jquery.min.js"></script>
+            <script type="text/javascript" src="./dist/highstock.js"></script>
+            <script>
+                $(function() {
+
+                    $("#slideThree").click(function() {
+                        if ($("#slideThree").prop("checked"))
+                            $(".slideThree").css('background', '#1a61dd');
+                        else
+                            $(".slideThree").css('background', '#fff');
+                    });
+
+                    $("#tab0").click(function() {
+                        $(this).removeClass('border');
+                        $(this).addClass('borderon');
+
+                        $("#tab1").removeClass('borderon1');
+                        $("#tab1").addClass('border');
+
+                        $("#tab2").addClass('border');
+
+                        $(".tick-list").show();
+                        $(".contcontainer1").show();
+                    });
+
+                    $("#tab1").click(function() {
+                        $(this).removeClass('border');
+                        $(this).addClass('borderon1');
+
+                        $("#tab0").removeClass('borderon');
+                        $("#tab0").addClass('border');
+
+                        $("#tab2").addClass('border');
+
+                        $(".tick-list").hide();
+                        $(".contcontainer1").hide();
+                    });
+
+                    var isdraw1 = true,
+                        isdraw2 = true,
+                        isdraw3 = true;
+                    $(".yo-ticktab1 .item").click(function() {
+                        var index = $(this).index();
+                        $(".yo-ticktab1 li").removeClass('item-on');
+                        $(this).addClass('item-on');
+
+                        $(".char").removeClass('container ');
+                        $("#container" + index).addClass('container');
+                        switch (index) {
+                            case 0:
+                                $("#container0").removeClass('none');
+                                $("#container1").addClass('none');
+                                $("#container2").addClass('none');
+                                break;
+                            case 1:
+                                if (isdraw2) {
+                                    draw1(securityId, yesterdayClose);
+                                    isdraw2 = false;
+                                }
+                                $("#container0").addClass('none');
+                                $("#container1").removeClass('none');
+                                $("#container2").addClass('none');
+                                break;
+                            case 2:
+                                $("#container0").addClass('none');
+                                $("#container1").addClass('none');
+                                $("#container2").removeClass('none');
+                                if (isdraw3) {
+                                    draw2(securityId, yesterdayClose);
+                                    isdraw3 = false;
+                                }
+                                break;
+                        }
+                    });
+
+                    var securityId = '21535',
+                        yesterdayClose = '';
+
+                    Highcharts.setOptions({
+                        global: {
+                            useUTC: false
+                        },
+                        lang: {
+                            rangeSelectorFrom: "日期:",
+                            rangeSelectorTo: "至",
+                            rangeSelectorZoom: "范围",
+                            loading: '加载中...',
+                            shortMonths: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                            weekdays: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+                        },
+                        colors: ['#5f97f6', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+                    });
+                    //'21761';//urlParse("securityId");
+                    $.getJSON('http://cfd-webapi.chinacloudapp.cn/api/security/' + securityId, function(result) {
+                        console.log(result);
+                        $(".p1").html(result.name + '(' + result.symbol + ')');
+                        var classname = '';
+                        if (result.last !== result.open) {
+                            classname = (result.last - result.open) > 0 ? "risePercent" : "fallPercent";
+                        } else {
+                            classname = 'stopPercent';
+                        }
+                        $(".p2").addClass(classname);
+                        $(".p2").addClass().html('<span>' + result.last + '</span> <span>' + ((result.last - result.open) / result.open * 100).toFixed(2) + '%</span>');
+                        yesterdayClose = result.preClose;
+                        draw(securityId, result.preClose);
+                    })
+
+
+                    function draw(secId, yesterdayClose) {
+                        $.getJSON('http://cfd-webapi.chinacloudapp.cn/api/quote/' + secId + '/tick/today', function(result) {
+                            //console.log(result);
+                            data = new Array();
+                            $.each(result, function(i, tick) {
+                                var t = new Date(tick.time);
+                                data.push([t.getTime(), tick.p]);
+                            });
+                            $('#container0').highcharts('StockChart', {
+                                title: {
+                                    text: ''
+                                },
+                                scrollbar: {
+                                    enabled: false
+                                },
+                                navigator: {
+                                    enabled: false
+                                },
+                                subtitle: {
+                                    text: ''
+                                },
+                                chart: {
+                                    spacing: [5, 5, 5, 5],
+                                    plotShadow: true,
+                                },
+                                rangeSelector: {
+                                    buttons: [{
+                                        type: 'hour',
+                                        count: 1,
+                                        text: '1h'
+                                    }, {
+                                        type: 'day',
+                                        count: 1,
+                                        text: '1D'
+                                    }],
+                                    enabled: false,
+                                    selected: 1,
+                                    inputEnabled: false
+                                },
+                                yAxis: [{
+                                    opposite: false,
+                                    gridLineColor: '#FFF',
+                                    gridLineWidth: 0.2,
+                                    top: '5%',
+                                    height: '90%',
+                                    showFirstLabel: true,
+                                    showLastLabel: true,
+                                    labels: {
+                                        align: 'left',
+                                        style: {
+                                            "color": "#7d7d7d"
+                                        },
+                                        x: 1,
+                                        y: -3,
+                                    },
+                                }, {
+                                    opposite: true,
+                                    gridLineColor: '#FFF',
+                                    gridLineWidth: 0.2,
+                                    top: '5%',
+                                    height: '90%',
+                                    showFirstLabel: true,
+                                    showLastLabel: true,
+                                    labels: {
+                                        style: {
+                                            "color": "#7d7d7d"
+                                        },
+                                        formatter: function() {
+                                            return (100 * (this.value / yesterdayClose - 1)).toFixed(2) + "%";
+                                        }
+                                    },
+                                }],
+                                xAxis: {
+                                    lineColor: 'transparent',
+                                    tickColor: "transparent",
+                                    labels: {
+                                        style: {
+                                            "color": "#7d7d7d"
+                                        },
+                                        formatter: function() {
+                                            var returnTime = Highcharts.dateFormat('%H:%M ', this.value);
+                                            return returnTime;
+                                        },
+                                    }
+                                },
+                                plotOptions: {
+                                    area: {
+                                        connectNulls: true, //该设置会连接空值点
+                                        // gapSize:1,//缺失点小于gapSize则连接
+                                        enableMouseTracking: false
+                                    }
+                                },
+                                series: [{
+                                    name: 'AAPL',
+                                    //type: 'areaspline',
+                                    type: 'area',
+                                    data: data,
+                                    gapSize: 1,
+                                    tooltip: {
+                                        valueDecimals: 2
+                                    },
+                                    lineColor: "#fff",
+                                    lineWidth: 1,
+                                    fillColor: {
+                                        linearGradient: {
+                                            x1: 0,
+                                            y1: 0,
+                                            x2: 0,
+                                            y2: 0 //渐变区域阀值
+                                        },
+                                        stops: [
+                                            [0, Highcharts.getOptions().colors[0]],
+                                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                        ]
+                                    },
+                                    threshold: null
+                                }, {
+                                    name: 'AAPL Stock Price',
+                                    data: data,
+                                    type: 'scatter',
+                                    cursor: 'pointer',
+                                    onSeries: 'candlestick',
+                                    color: 'transparent',
+                                    tooltip: {
+                                        valueDecimals: 2
+                                    },
+                                    style: {
+                                        fontSize: '0px',
+                                        fontWeight: '0',
+                                        textAlign: 'center'
+                                    },
+                                    zIndex: -1000,
+                                    yAxis: 1,
+                                }]
+                            });
+                        });
+                    }
+
+                    function draw1(secId, yesterdayClose) {
+                        $.getJSON('http://cfd-webapi.chinacloudapp.cn/api/quote/' + secId + '/tick/week', function(result) {
+                            //console.log(result);
+                            data = new Array();
+                            $.each(result, function(i, tick) {
+                                var t = new Date(tick.time);
+                                data.push([t.getTime(), tick.p]);
+                            });
+                            $('#container1').highcharts('StockChart', {
+                                title: {
+                                    text: ''
+                                },
+                                scrollbar: {
+                                    enabled: false
+                                },
+                                navigator: {
+                                    enabled: false
+                                },
+                                subtitle: {
+                                    text: ''
+                                },
+                                chart: {
+                                    spacing: [5, 5, 5, 5],
+                                    plotShadow: true,
+                                },
+                                rangeSelector: {
+                                    buttons: [{
+                                        type: 'hour',
+                                        count: 1,
+                                        text: '1h'
+                                    }, {
+                                        type: 'day',
+                                        count: 1,
+                                        text: '1D'
+                                    }],
+                                    enabled: false,
+                                    selected: 1,
+                                    inputEnabled: false
+                                },
+                                yAxis: [{
+                                    opposite: false,
+                                    //minTickInterval:0.001,
+                                    //minorTickInterval:0.001,
+                                    gridLineColor: '#FFF',
+                                    gridLineWidth: 0.2,
+                                    top: '5%',
+                                    height: '90%',
+                                    showFirstLabel: true,
+                                    showLastLabel: true,
+                                    labels: {
+                                        align: 'left',
+                                        style: {
+                                            "color": "#7d7d7d"
+                                        },
+                                        x: 1,
+                                        y: -3,
+                                    },
+                                }, {
+                                    opposite: true,
+                                    gridLineColor: '#FFF',
+                                    gridLineWidth: 0.2,
+                                    top: '5%',
+                                    height: '90%',
+                                    showFirstLabel: true,
+                                    showLastLabel: true,
+                                    labels: {
+                                        // align: 'left',
+                                        // x: 1,
+                                        // y: 1,
+                                        style: {
+                                            "color": "#7d7d7d"
+                                        },
+                                        formatter: function() {
+                                            //return  this.value;
+                                            //(100*(this.value-yesterdayClose)/yesterdayClose).toFixed(2)+"%";
+                                            return (100 * (this.value / yesterdayClose - 1)).toFixed(2) + "%";
+                                        }
+                                    },
+                                }],
+                                xAxis: {
+                                    // type: 'datetime',
+                                    // tickLength: 0,
+                                    lineColor: 'transparent',
+                                    tickColor: "transparent",
+                                    labels: {
+                                        style: {
+                                            "color": "#7d7d7d"
+                                        },
+                                        formatter: function() {
+                                            var returnTime = Highcharts.dateFormat('%m-%d ', this.value);
+                                            // if(returnTime=="11:30 ")
+                                            // {
+                                            //     return "11:30/13:00";
+                                            // }
+                                            return returnTime;
+                                        },
+                                    }
+                                },
+                                plotOptions: {
+                                    area: {
+                                        connectNulls: true, //该设置会连接空值点
+                                        // gapSize:1,//缺失点小于gapSize则连接
+                                        enableMouseTracking: false
+                                    }
+                                },
+                                series: [{
+                                    name: 'AAPL',
+                                    //type: 'areaspline',
+                                    type: 'area',
+                                    data: data,
+                                    gapSize: 1,
+                                    tooltip: {
+                                        valueDecimals: 2
+                                    },
+                                    lineColor: "#fff",
+                                    lineWidth: 1,
+                                    fillColor: {
+                                        linearGradient: {
+                                            x1: 0,
+                                            y1: 0,
+                                            x2: 0,
+                                            y2: 0 //渐变区域阀值
+                                        },
+                                        stops: [
+                                            [0, Highcharts.getOptions().colors[0]],
+                                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                        ]
+                                    },
+                                    threshold: null
+                                }, {
+                                    name: 'AAPL Stock Price',
+                                    data: data,
+                                    type: 'scatter',
+                                    cursor: 'pointer',
+                                    onSeries: 'candlestick',
+                                    color: 'transparent',
+                                    tooltip: {
+                                        valueDecimals: 2
+                                    },
+                                    style: {
+                                        fontSize: '0px',
+                                        fontWeight: '0',
+                                        textAlign: 'center'
+                                    },
+                                    zIndex: -1000,
+                                    yAxis: 1,
+                                }]
+                            });
+                        });
+                    }
+
+                    function draw2(secId, yesterdayClose) {
+                        $.getJSON('http://cfd-webapi.chinacloudapp.cn/api/quote/' + secId + '/tick/month', function(result) {
+                            //console.log(result);
+                            data = new Array();
+                            $.each(result, function(i, tick) {
+                                var t = new Date(tick.time);
+                                data.push([t.getTime(), tick.p]);
+
+                            });
+                            $('#container2').highcharts('StockChart', {
+                                title: {
+                                    text: ''
+                                },
+                                scrollbar: {
+                                    enabled: false
+                                },
+                                navigator: {
+                                    enabled: false
+                                },
+                                subtitle: {
+                                    text: ''
+                                },
+                                chart: {
+                                    spacing: [5, 5, 5, 5],
+                                    plotShadow: true,
+                                },
+                                rangeSelector: {
+                                    buttons: [{
+                                        type: 'hour',
+                                        count: 1,
+                                        text: '1h'
+                                    }, {
+                                        type: 'day',
+                                        count: 1,
+                                        text: '1D'
+                                    }],
+                                    enabled: false,
+                                    selected: 1,
+                                    inputEnabled: false
+                                },
+                                yAxis: [{
+                                    opposite: false,
+                                    //minTickInterval:0.001,
+                                    //minorTickInterval:0.001,
+                                    gridLineColor: '#FFF',
+                                    gridLineWidth: 0.2,
+                                    top: '5%',
+                                    height: '90%',
+                                    showFirstLabel: true,
+                                    showLastLabel: true,
+                                    labels: {
+                                        align: 'left',
+                                        style: {
+                                            "color": "#7d7d7d"
+                                        },
+                                        x: 1,
+                                        y: -3,
+                                    },
+                                }, {
+                                    opposite: true,
+                                    gridLineColor: '#FFF',
+                                    gridLineWidth: 0.2,
+                                    top: '5%',
+                                    height: '90%',
+                                    showFirstLabel: true,
+                                    showLastLabel: true,
+                                    labels: {
+                                        style: {
+                                            "color": "#7d7d7d"
+                                        },
+                                        formatter: function() {
+                                            return (100 * (this.value / yesterdayClose - 1)).toFixed(2) + "%";
+                                        }
+                                    },
+                                }],
+                                xAxis: {
+                                    // type: 'datetime',
+                                    // tickLength: 0,
+                                    lineColor: 'transparent',
+                                    tickColor: "transparent",
+                                    labels: {
+                                        style: {
+                                            "color": "#7d7d7d"
+                                        },
+                                        formatter: function() {
+                                            var returnTime = Highcharts.dateFormat('%m-%d ', this.value);
+                                            // if(returnTime=="11:30 ")
+                                            // {
+                                            //     return "11:30/13:00";
+                                            // }
+                                            return returnTime;
+                                        },
+                                    }
+                                },
+                                plotOptions: {
+                                    area: {
+                                        connectNulls: true, //该设置会连接空值点
+                                        // gapSize:1,//缺失点小于gapSize则连接
+                                        enableMouseTracking: false
+                                    }
+                                },
+                                series: [{
+                                    name: 'AAPL',
+                                    //type: 'areaspline',
+                                    type: 'area',
+                                    data: data,
+                                    gapSize: 1,
+                                    tooltip: {
+                                        valueDecimals: 2
+                                    },
+                                    lineColor: "#fff",
+                                    lineWidth: 1,
+                                    fillColor: {
+                                        linearGradient: {
+                                            x1: 0,
+                                            y1: 0,
+                                            x2: 0,
+                                            y2: 0 //渐变区域阀值
+                                        },
+                                        stops: [
+                                            [0, Highcharts.getOptions().colors[0]],
+                                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                        ]
+                                    },
+                                    threshold: null
+                                }, {
+                                    name: 'AAPL Stock Price',
+                                    data: data,
+                                    type: 'scatter',
+                                    cursor: 'pointer',
+                                    onSeries: 'candlestick',
+                                    color: 'transparent',
+                                    tooltip: {
+                                        valueDecimals: 2
+                                    },
+                                    style: {
+                                        fontSize: '0px',
+                                        fontWeight: '0',
+                                        textAlign: 'center'
+                                    },
+                                    zIndex: -1000,
+                                    yAxis: 1,
+                                }]
+                            });
+                        });
+                    }
+                    //置顶
+                    var $top = $(".top");
+                    $top.click(function() {
+                        var $tr = $(this).parents("li");
+                        $tr.fadeOut().fadeIn();
+                        $("#handle-1").prepend($tr);
+                    });
+
+                    //全选
+                    $("#selectAll").click(function() {
+                        if ($("#selectAll").val() == '全部') {
+                            $("#handle-1 :checkbox").prop("checked", true);
+                            $("#selectAll").val('不选');
+                        } else {
+                            $("#handle-1 :checkbox").prop("checked", false);
+                            $("#selectAll").val('全部');
+                        }
+
+                    });
+
+                    //获取选中选项的值
+                    $("#getValue").click(function() {
+                        var valArr = new Array;
+                        $("#handle-1 :checkbox").each(function(i) {
+                            if ($(this).prop('checked') == true) {
+                                valArr[i] = $(this).val();
+                            }
+                        });
+                        console.log(valArr);
+                    });
+                });
+            </script>
+            <script src="./dist/Sortable.js"></script>
+            <script>
+                Sortable.create(document.getElementById('handle-1'), {
+                    group: "localStorage-example",
+                    // store: {
+                    //     get: function (sortable) {
+                    //         var order = localStorage.getItem(sortable.options.group);
+                    //         console.log(order);
+                    //         return order ? order.split('|') : [];
+                    //     },
+                    //     set: function (sortable) {
+                    //         var order = sortable.toArray();
+                    //         console.log(order);
+                    //         localStorage.setItem(sortable.options.group, order.join('|'));
+                    //     }
+                    // },
+                    handle: '.drag-handle',
+                    animation: 150,
+                    //filter: '.js-remove',
+                    onFilter: function(evt) {
+                        console.log(evt.item);
+                        evt.item.parentNode.removeChild(evt.item);
+                    }
+                });
+            </script>
+
+</body>
+
+</html>

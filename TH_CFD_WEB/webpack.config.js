@@ -52,10 +52,6 @@ var config = {
         filename: "[name].js",
         publicPath: '/static/'
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
-    ],
     resolve: {
         alias: []
     },
@@ -79,10 +75,19 @@ var config = {
         return [precss, autoprefixer];
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                //supresses warnings, usually from module minification
+                warnings: false
+            }
+        }),
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+            //'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+            "process.env": {
+                NODE_ENV: JSON.stringify("production")
+            }
         })
     ]
 }
